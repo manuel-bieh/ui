@@ -1,0 +1,1 @@
+import*as React from'react';import css from'./Footer.module.css';var Footer=function Footer(_ref){var children=_ref.children;return React.createElement("footer",{className:css.wrapper},children);};export default Footer;

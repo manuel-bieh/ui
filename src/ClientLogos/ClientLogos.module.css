@@ -1,0 +1,10 @@
+.wrapper {
+    font-size: 0;
+    text-align: center;
+
+    img {
+        margin: 8px 12px;
+        max-width: calc(50% - 24px);
+        width: 216px;
+    }
+}

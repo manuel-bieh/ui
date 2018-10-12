@@ -1,0 +1,1 @@
+import React from'react';import{storiesOf}from'@storybook/react';import Hierarchy from'../../.storybook/hierarchyGroups';import Header from'.';storiesOf("".concat(Hierarchy.LAYOUT,"|Header"),module).addWithJSX('With some content',function(){return React.createElement(Header,null,"Content");});

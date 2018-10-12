@@ -1,0 +1,1 @@
+import React from'react';import{storiesOf}from'@storybook/react';import Hierarchy from'../../.storybook/hierarchyGroups';import SocialMediaIcons from'.';storiesOf("".concat(Hierarchy.COMPONENTS,"|SocialMediaIcons"),module).addWithJSX('Default',function(){return React.createElement(SocialMediaIcons,null);});

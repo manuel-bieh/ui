@@ -1,0 +1,55 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+    build:
+        docker:
+            # specify the version you desire here
+            - image: circleci/node:8.11.3-stretch-browsers
+
+        working_directory: ~/repo
+        branches:
+            only:
+                - develop
+                - master
+
+        steps:
+            - add_ssh_keys:
+                  fingerprints:
+                      - '30:43:6f:e9:0b:4b:47:96:f1:5d:da:05:38:d0:d4:57'
+
+            - checkout
+
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "package.json" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - v1-dependencies-
+
+            - run:
+                  name: Install dependencies
+                  command: yarn
+
+            - save_cache:
+                  paths:
+                      - node_modules
+                  key: v1-dependencies-{{ checksum "package.json" }}
+
+            - run:
+                  name: Build Library
+                  command: yarn build
+
+            - run:
+                  name: Release
+                  command: yarn release
+
+            - run:
+                  name: Build Storybook
+                  command: yarn build-storybook
+
+            - deploy:
+                  name: Deploy Storybook
+                  command: yarn deploy-storybook

@@ -1,0 +1,14 @@
+.wrapper {
+    border-collapse: collapse;
+    line-height: 11.5pt;
+    margin: 0 0 1em 0;
+    width: 100%; /**/
+
+    tr:nth-child(2n) td {
+        background: #f3f3f3;
+    }
+
+    td {
+        padding: 5px;
+    }
+}

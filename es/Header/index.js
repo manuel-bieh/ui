@@ -1,0 +1,1 @@
+import*as React from'react';import classNames from'classnames';import css from'./Header.module.css';var Header=function Header(_ref){var children=_ref.children,className=_ref.className;return React.createElement("header",{className:classNames(css.wrapper,className)},children);};export default Header;
