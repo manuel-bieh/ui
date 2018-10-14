@@ -1,1 +1,32 @@
-.wrapper{background:#174c5b;color:#f9f9f9;margin-bottom:0;padding:16px;position:relative;width:100%}.wrapper:after{background:-o-linear-gradient(271deg,#174c5b 0,#174c5b 49%,hsla(0,0%,100%,0) 51%,hsla(0,0%,100%,0) 100%);background:linear-gradient(179deg,#174c5b,#174c5b 49%,hsla(0,0%,100%,0) 51%,hsla(0,0%,100%,0));bottom:-32px;content:"";display:block;height:32px;left:0;position:absolute;right:0}
+.wrapper{
+    color:#f9f9f9;
+    background:#174c5b;
+    margin-bottom:0;
+    padding:16px;
+    position:relative;
+    width:100%;
+}
+
+    .wrapper:after{
+        content:'';
+        height:32px;
+        display:block;
+        background:-o-linear-gradient(
+            271deg,
+            #174c5b 0,
+              #174c5b 49%,
+            #ffffff00 51%,
+            #ffffff00 100%
+        );
+        background:linear-gradient(
+            179deg,
+            #174c5b 0,
+              #174c5b 49%,
+            #ffffff00 51%,
+            #ffffff00 100%
+        );
+        position:absolute;
+        bottom:-32px;
+        left:0;
+        right:0;
+    }

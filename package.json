@@ -13,6 +13,7 @@
     "analyze": "yarn build:withStats && yarn analyze:bundle",
     "analyze:bundle": "webpack-bundle-analyzer bundle-stats.json -p 8889",
     "babel:build": "babel -d es ./src",
+    "babel:watch": "babel -d es ./src --watch",
     "build": "yarn build:es && yarn build:compiled",
     "build:es": "yarn transpile",
     "build:compiled": "cross-env NODE_ENV=production node scripts/build.js",
@@ -28,13 +29,15 @@
     "rename:css": "rename .css .module.css es/{**/,}*.css",
     "postrelease": "git push origin master --follow-tags",
     "postcss:build": "postcss src/**/*.css --base src -d es",
+    "postcss:watch": "postcss src/**/*.css --base src -d es --watch",
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "storybook:deploy": "surge --project ./storybook-static --domain manuelbieh-ui.surge.sh",
     "test": "node scripts/test.js --env=jsdom",
     "test:update": "yarn test --updateSnapshot",
-    "transpile": "yarn clean && yarn babel:build && yarn postcss:build"
+    "transpile": "yarn clean && yarn babel:build && yarn postcss:build",
+    "watch": ""
   },
   "lint-staged": {
     "*.{js,css}": [

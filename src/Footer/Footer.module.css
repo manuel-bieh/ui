@@ -1,6 +1,8 @@
+@import '../variables.css';
+
 .wrapper {
-    color: #f9f9f9;
-    background: #94b6b5;
+    color: var(--color-black);
+    background: var(--color-secondary);
     margin-bottom: 0;
     margin-top: 32px;
     padding: 16px;
@@ -12,15 +14,23 @@
         height: 32px;
         display: block;
         background: linear-gradient(
-            179deg,
+            179.5deg,
             #ffffff00 0,
             #ffffff00 50%,
-            #94b6b5 50.1%,
-            #94b6b5 100%
+            var(--color-secondary) 51%,
+            var(--color-secondary) 100%
         );
         position: absolute;
         top: -32px;
         left: 0;
         right: 0;
+    }
+
+    a {
+        color: var(--color-primary);
+    }
+
+    a:hover {
+        color: var(--color-darkwhite);
     }
 }

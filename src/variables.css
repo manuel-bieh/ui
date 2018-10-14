@@ -9,9 +9,10 @@
     --default-font-weight: 300;
     --viewport-max-width: 1280px;
 
-    --color-primary: #ff5248;
-    --color-primary--lighten: #feb5b1;
-    --color-primary--darken: #dc473e;
+    --color-primary: #174c5b;
+    --color-secondary: #94b6b5;
+    --color-accent: #00c7c2;
+
     --color-black: #272727;
     --color-white: #fff;
     --color-darkwhite: #f9f9f9;
