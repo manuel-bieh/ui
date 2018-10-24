@@ -7,7 +7,9 @@ module.exports = {
         }),
         require('postcss-nested')(),
         require('postcss-each')(),
-        require('postcss-custom-media')(),
+        require('postcss-custom-media')({
+            preserve: true,
+        }),
         require('postcss-custom-properties')(),
         require('postcss-flexbugs-fixes')(),
         require('autoprefixer')({

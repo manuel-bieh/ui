@@ -1,93 +1,101 @@
-:root{
-    --default-font-family:Classic Round, Georgia, Sans-Seri;
-    --default-font-weight:300;
-    --viewport-max-width:1280px;
+:root {
+    --default-font-family: Classic Round, Georgia, Sans-Seri;
+    --default-font-weight: 300;
+    --viewport-max-width: 1280px;
 
-    --color-primary:#174c5b;
-    --color-secondary:#94b6b5;
-    --color-accent:#00c7c2;
+    --color-primary: #174c5b;
+    --color-secondary: #94b6b5;
+    --color-accent: #00c7c2;
 
-    --color-black:#272727;
-    --color-white:#fff;
-    --color-darkwhite:#f9f9f9;
-    --color-grey:#a3afb2;
-    --color-lightgrey:#e5e5e5;
-    --color-lightgrey-shape:#c5cdcf;
-    --color-darkgrey:#6f6e6e;
+    --color-black: #272727;
+    --color-white: #fff;
+    --color-darkwhite: #f9f9f9;
+    --color-grey: #a3afb2;
+    --color-lightgrey: #e5e5e5;
+    --color-lightgrey-shape: #c5cdcf;
+    --color-darkgrey: #6f6e6e;
 
-    --card-padding:8px;
-    --card-margin:16px;
+    --card-padding: 8px;
+    --card-margin: 16px;
 
-    --layer--notification:48;
+    --layer--notification: 48;
 
-    --layer--overlay-content:64;
-    --layer--overlay-backdrop:63;
+    --layer--overlay-content: 64;
+    --layer--overlay-backdrop: 63;
 
-    --drop-shadow--sm:2px 2px 4px rgba(0, 0, 0, 0.04);
-    --drop-shadow--md:2px 2px 11px rgba(0, 0, 0, 0.1);
-    --drop-shadow--lg:0px 12px 22px rgba(0, 0, 0, 0.1);
-    --checkbox-size:28px;
-    --topbar-height:80px;
+    --drop-shadow--sm: 2px 2px 4px rgba(0, 0, 0, 0.04);
+    --drop-shadow--md: 2px 2px 11px rgba(0, 0, 0, 0.1);
+    --drop-shadow--lg: 0px 12px 22px rgba(0, 0, 0, 0.1);
+    --checkbox-size: 28px;
+    --topbar-height: 80px;
 
-    --font-size-xsmall:12px;
-    --font-size-small:15px;
-    --font-size-default:17px;
-    --font-size-medium:20px;
-    --font-size-large:28px;
-    --font-size-xlarge:36px;
+    --font-size-xsmall: 12px;
+    --font-size-small: 15px;
+    --font-size-default: 17px;
+    --font-size-medium: 20px;
+    --font-size-large: 28px;
+    --font-size-xlarge: 36px;
 
-    --spacing-xsmall:4px;
-    --spacing-small:8px;
-    --spacing-default:16px;
-    --spacing-medium:24px;
-    --spacing-large:36px;
-    --spacing-xlarge:48px;
+    --spacing-xsmall: 4px;
+    --spacing-small: 8px;
+    --spacing-default: 16px;
+    --spacing-medium: 24px;
+    --spacing-large: 36px;
+    --spacing-xlarge: 48px;
 
-    --border-radius:8px;
+    --border-radius: 8px;
 
-    --transition-duration-short:0.1s;
-    --transition-duration-default:0.5s;
-    --transition-duration-long:1s;
+    --transition-duration-short: 0.1s;
+    --transition-duration-default: 0.5s;
+    --transition-duration-long: 1s;
 }
-*{
-    margin:0;
-    padding:0;
-    -webkit-box-sizing:border-box;
-            box-sizing:border-box;
-    -webkit-font-smoothing:antialiased;
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
+
 *:before,
-    *:after{
-        -webkit-box-sizing:border-box;
-                box-sizing:border-box;
-    }
-body{
-    font-family:Classic Round, Georgia, Sans-Seri;
-    font-family:var(--default-font-family);
-    font-weight:300;
-    font-weight:var(--default-font-weight);
-    line-height:1.5;
+*:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
-:global(.debug){
-    outline:1px solid red;
+
+body {
+    font-family: Classic Round, Georgia, Sans-Seri;
+    font-family: var(--default-font-family);
+    font-weight: 300;
+    font-weight: var(--default-font-weight);
+    line-height: 1.5;
 }
-::-webkit-input-placeholder{
-    color:#e5e5e5;
-    color:var(--color-lightgrey);
-    font-style:italic;
+
+:global(.debug) {
+    outline: 1px solid red;
 }
-:-ms-input-placeholder{
-    color:#e5e5e5;
-    color:var(--color-lightgrey);
-    font-style:italic;
+
+::-webkit-input-placeholder {
+    color: #e5e5e5;
+    color: var(--color-lightgrey);
+    font-style: italic;
 }
-::-ms-input-placeholder{
-    color:#e5e5e5;
-    color:var(--color-lightgrey);
-    font-style:italic;
+
+:-ms-input-placeholder {
+    color: #e5e5e5;
+    color: var(--color-lightgrey);
+    font-style: italic;
 }
-::placeholder{
-    color:#e5e5e5;
-    color:var(--color-lightgrey);
-    font-style:italic;
+
+::-ms-input-placeholder {
+    color: #e5e5e5;
+    color: var(--color-lightgrey);
+    font-style: italic;
+}
+
+::placeholder {
+    color: #e5e5e5;
+    color: var(--color-lightgrey);
+    font-style: italic;
 }
