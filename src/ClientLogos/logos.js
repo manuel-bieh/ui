@@ -20,9 +20,10 @@ export default [
         url: 'https://www.c3.co/',
     },
     {
-        name: 'Fotocommunity.de',
-        image: 'fotocommunity.svg',
-        url: 'https://www.fotocommunity.de/',
+        name: 'Porsche',
+        image: 'porsche.svg',
+        url:
+            'https://www.porsche.com/germany/aboutporsche/service/porschedigitallab/',
     },
     {
         name: 'Handelsblatt',
@@ -35,9 +36,14 @@ export default [
         url: 'http://www.wiwo.de/',
     },
     {
-        name: 'itemis AG',
-        image: 'itemis.svg',
-        url: 'https://www.itemis.de/',
+        name: 'Klarna',
+        image: 'klarna.svg',
+        url: 'https://www.klarna.com/',
+    },
+    {
+        name: 'Fotocommunity.de',
+        image: 'fotocommunity.svg',
+        url: 'https://www.fotocommunity.de/',
     },
     {
         name: 'Publicis Pixelpark',
@@ -79,11 +85,11 @@ export default [
         image: 'servicepartnerone.svg',
         url: 'https://www.servicepartnerone.de/',
     },
-    {
-        name: 'Amakuria',
-        image: 'amakuria.svg',
-        url: 'https://www.amakuria.de/',
-    },
+    // {
+    //     name: 'Amakuria',
+    //     image: 'amakuria.svg',
+    //     url: 'https://www.amakuria.de/',
+    // },
     {
         name: 'Candis GmbH',
         image: 'candis.svg',

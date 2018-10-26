@@ -49,6 +49,7 @@
     --transition-duration-default:0.5s;
     --transition-duration-long:1s;
 }
+
 *{
     margin:0;
     padding:0;
@@ -56,11 +57,13 @@
             box-sizing:border-box;
     -webkit-font-smoothing:antialiased;
 }
+
 *:before,
     *:after{
         -webkit-box-sizing:border-box;
                 box-sizing:border-box;
     }
+
 body{
     font-family:Classic Round, Georgia, Sans-Seri;
     font-family:var(--default-font-family);
@@ -68,24 +71,29 @@ body{
     font-weight:var(--default-font-weight);
     line-height:1.5;
 }
+
 :global(.debug){
     outline:1px solid red;
 }
+
 ::-webkit-input-placeholder{
     color:#e5e5e5;
     color:var(--color-lightgrey);
     font-style:italic;
 }
+
 :-ms-input-placeholder{
     color:#e5e5e5;
     color:var(--color-lightgrey);
     font-style:italic;
 }
+
 ::-ms-input-placeholder{
     color:#e5e5e5;
     color:var(--color-lightgrey);
     font-style:italic;
 }
+
 ::placeholder{
     color:#e5e5e5;
     color:var(--color-lightgrey);

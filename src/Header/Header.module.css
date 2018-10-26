@@ -1,6 +1,8 @@
+@import '../variables';
+
 .wrapper {
     color: #f9f9f9;
-    background: #174c5b;
+    background: var(--color-primary);
     margin-bottom: 0;
     padding: 16px;
     position: relative;
@@ -12,12 +14,19 @@
         display: block;
         background: linear-gradient(
             179deg,
-            #174c5b 0,
-            /* #174c5b 50%,
-            #ffffff00 50.1%, */ #174c5b 49%,
+            var(--color-primary) 0,
+            var(--color-primary) 49%,
+            rgba(255, 255, 255, 0) 51%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        /* does not work in edge: */
+        /* background: linear-gradient(
+            179deg,
+            var(--color-primary) 0,
+            var(--color-primary) 49%,
             #ffffff00 51%,
             #ffffff00 100%
-        );
+        ); */
         position: absolute;
         bottom: -32px;
         left: 0;

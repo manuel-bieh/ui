@@ -49,6 +49,7 @@
     --transition-duration-default:0.5s;
     --transition-duration-long:1s;
 }
+
 .wrapper{
     color:#272727;
     color:var(--color-black);
@@ -60,35 +61,36 @@
     position:relative;
     width:100%;
 }
+
 .wrapper:after{
         content:'';
         height:32px;
         display:block;
         background:-o-linear-gradient(
             270.5deg,
-            #ffffff00 0,
-            #ffffff00 50%,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0) 50%,
             #94b6b5 51%,
             #94b6b5 100%
         );
         background:-o-linear-gradient(
             270.5deg,
-            #ffffff00 0,
-            #ffffff00 50%,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0) 50%,
             var(--color-secondary) 51%,
             var(--color-secondary) 100%
         );
         background:linear-gradient(
             179.5deg,
-            #ffffff00 0,
-            #ffffff00 50%,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0) 50%,
             #94b6b5 51%,
             #94b6b5 100%
         );
         background:linear-gradient(
             179.5deg,
-            #ffffff00 0,
-            #ffffff00 50%,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0) 50%,
             var(--color-secondary) 51%,
             var(--color-secondary) 100%
         );
@@ -97,10 +99,12 @@
         left:0;
         right:0;
     }
+
 .wrapper a{
         color:#174c5b;
         color:var(--color-primary);
     }
+
 .wrapper a:hover{
         color:#f9f9f9;
         color:var(--color-darkwhite);
