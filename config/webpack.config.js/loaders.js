@@ -33,12 +33,30 @@ const cssLoaderClient = {
 
 const urlLoaderClient = {
     test: /\.(png|jpe?g|gif|svg)$/,
-    loader: require.resolve('url-loader'),
-    options: {
-        name: 'assets/[name].[ext]',
-        limit: 2048,
-    },
+    use: [
+        {
+            loader: require.resolve('url-loader'),
+            options: {
+                name: 'assets/[name].[ext]',
+                limit: 2048,
+            },
+        },
+        {
+            loader: 'image-webpack-loader',
+            options: {
+                // disable: true,
+            },
+        },
+    ],
 };
+// const urlLoaderClient = {
+//     test: /\.(png|jpe?g|gif|svg)$/,
+//     loader: require.resolve('url-loader'),
+//     options: {
+//         name: 'assets/[name].[ext]',
+//         limit: 2048,
+//     },
+// };
 
 const fileLoaderClient = {
     exclude: [/\.(js|css|mjs|html|json|ejs)$/],
