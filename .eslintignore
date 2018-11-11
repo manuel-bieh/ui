@@ -3,3 +3,4 @@
 src/frontend/config/env.js
 **/build
 **/lib
+**/es

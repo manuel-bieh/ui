@@ -1,6 +1,6 @@
 {
   "name": "@manuel-bieh/ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Manuel Bieh <info@manuelbieh.de> (https://github.com/manuelbieh)",
   "license": "MIT",
   "main": "dist/main.js",
@@ -54,19 +54,21 @@
     "node_modules"
   ],
   "files": [
+    "assets/*",
     "lib/*",
     "dist/*",
-    "src/*"
+    "src/*",
+    "es/*"
   ],
   "dependencies": {
-    "@storybook/addon-actions": "4.0.0-alpha.16",
-    "@storybook/addon-backgrounds": "4.0.0-alpha.16",
-    "@storybook/addon-knobs": "4.0.0-alpha.16",
-    "@storybook/addon-links": "4.0.0-alpha.16",
-    "@storybook/addon-options": "4.0.0-alpha.16",
-    "@storybook/addon-storysource": "4.0.0-alpha.16",
-    "@storybook/addons": "4.0.0-alpha.16",
-    "@storybook/react": "4.0.0-alpha.16",
+    "@storybook/addon-actions": "^4.0.0",
+    "@storybook/addon-backgrounds": "^4.0.0",
+    "@storybook/addon-knobs": "^4.0.0",
+    "@storybook/addon-links": "^4.0.0",
+    "@storybook/addon-options": "^4.0.0",
+    "@storybook/addon-storysource": "^4.0.0",
+    "@storybook/addons": "^4.0.0",
+    "@storybook/react": "^4.0.0",
     "classnames": "^2.2.6",
     "cssnano": "^4.1.0",
     "install-deps-postmerge": "^1.0.2",

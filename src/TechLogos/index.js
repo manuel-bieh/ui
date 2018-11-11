@@ -7,6 +7,7 @@ const TechLogos = () => (
         {techLogos.map((tech) => (
             <img
                 key={tech.name}
+                alt={`Logo: ${tech.name}`}
                 src={require(`../../assets/img/tech/${tech}`)}
             />
         ))}
