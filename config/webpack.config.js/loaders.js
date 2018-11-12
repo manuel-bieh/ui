@@ -49,14 +49,6 @@ const urlLoaderClient = {
         },
     ],
 };
-// const urlLoaderClient = {
-//     test: /\.(png|jpe?g|gif|svg)$/,
-//     loader: require.resolve('url-loader'),
-//     options: {
-//         name: 'assets/[name].[ext]',
-//         limit: 2048,
-//     },
-// };
 
 const fileLoaderClient = {
     exclude: [/\.(js|css|mjs|html|json|ejs)$/],
