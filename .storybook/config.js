@@ -1,10 +1,13 @@
 import React from 'react';
 import { configure, setAddon, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
+// import { withInfo } from '@storybook/addon-info';
 import JSXAddon from 'storybook-addon-jsx';
 import './intro';
 
 setAddon(JSXAddon);
+
+// addDecorator(withInfo);
 
 // Add some padding to our stories
 addDecorator((storyFn) => (

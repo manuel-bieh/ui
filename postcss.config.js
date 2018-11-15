@@ -19,7 +19,6 @@ module.exports = {
         require('postcss-assets')({
             basePath: './assets',
         }),
-        // require('postcss-normalize')(),
         require('postcss-discard-duplicates')(),
         require('postcss-discard-comments')(),
         require('postcss-discard-empty')(),
