@@ -40,7 +40,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "test:update": "yarn test --updateSnapshot",
     "transpile": "yarn clean:es && yarn babel:build && yarn postcss:build",
-    "watch": ""
+    "watch": "concurrently \"yarn babel:watch\" \"yarn postcss:watch\""
   },
   "lint-staged": {
     "*.{js,css}": [
