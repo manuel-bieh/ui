@@ -108,4 +108,3 @@ All updated files in `./src` are checked using ESLint and `lint-staged`. If ther
 ### Analyze your build
 
 There is an anaylze task. It can be used for exactly that: analyzing your Webpack build. That's useful if your build gets suspiciously large. So make use of it!
-
