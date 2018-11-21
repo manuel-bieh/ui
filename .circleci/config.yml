@@ -48,8 +48,8 @@ jobs:
 
             - run:
                   name: Build Storybook
-                  command: yarn build-storybook
+                  command: yarn storybook:build
 
             - deploy:
                   name: Deploy Storybook
-                  command: yarn deploy-storybook
+                  command: yarn storybook:deploy
