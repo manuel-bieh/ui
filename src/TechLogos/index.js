@@ -1,9 +1,15 @@
+// @flow
 import * as React from 'react';
 import techLogos from './logos';
 import css from './TechLogos.module.css';
+import classNames from 'classnames';
 
-const TechLogos = () => (
-    <section className={css.wrapper}>
+type PropsT = {
+    className?: string,
+};
+
+const TechLogos = ({ className }: PropsT) => (
+    <section className={classNames(css.wrapper, className)}>
         {techLogos.map((tech) => (
             <img
                 key={tech}
