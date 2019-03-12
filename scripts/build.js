@@ -18,7 +18,7 @@ const build = async () => {
     const multiCompiler = webpack([clientConfig]);
 
     const clientCompiler = multiCompiler.compilers[0];
-    const clientPromise = compilerPromise(clientCompiler);
+    const clientPromise = compilerPromise('client', clientCompiler);
 
     clientCompiler.watch({}, (error, stats) => {
         if (!error && !stats.hasErrors()) {

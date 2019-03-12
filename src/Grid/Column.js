@@ -2,6 +2,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import css from './Grid.module.css';
+import { ucfirst } from '../utils';
 
 // import css from 'css/layout/Grid.scss';
 
@@ -76,14 +77,10 @@ export default class Column extends React.PureComponent<PropsT> {
                     sizeClass,
                     padClass,
                     columnClassName,
-                    textAlign &&
-                        css[
-                            `textAlign${textAlign
-                                .charAt(0)
-                                .toUpperCase()}${textAlign.slice(1)}`
-                        ],
-                    alignItems && css[`alignItems${alignItems}`],
-                    justifyContent && css[`justifyContent${justifyContent}`],
+                    textAlign && css[`textAlign${ucfirst(textAlign)}`],
+                    alignItems && css[`alignItems${ucfirst(alignItems)}`],
+                    justifyContent &&
+                        css[`justifyContent${ucfirst(justifyContent)}`],
                     box && css.box,
                     className
                 )}

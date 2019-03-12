@@ -2,6 +2,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import css from './Grid.module.css';
+import { ucfirst } from '../utils';
 
 type PropsT = {
     align?: 'start' | 'end' | 'stretch' | 'center',
@@ -24,9 +25,10 @@ export default function Row({
         <TagName
             className={classNames(
                 css.row,
-                textAlign && css[`text-align--${textAlign}`],
-                align && css[`align--${align}`],
-                justifyContent && css[`justify-content--${justifyContent}`],
+                textAlign && css[`textAlign${ucfirst(textAlign)}`],
+                align && css[`align${ucfirst(align)}`],
+                justifyContent &&
+                    css[`justifyContent${ucfirst(justifyContent)}`],
                 className
             )}
             {...props}
