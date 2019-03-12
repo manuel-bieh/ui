@@ -2,39 +2,49 @@
 import React from 'react';
 import classNames from 'classnames';
 import css from './Grid.module.css';
+import { ucfirst } from '../utils';
 
 type PropsT = {
-    tagName?: string,
+    align?: 'start' | 'end' | 'stretch' | 'center',
     centered?: boolean,
     children: any,
     className?: string,
+    el: any,
     fluid: boolean,
+    justifyContent?: 'start' | 'end' | 'center',
     seamless?: boolean,
-    style?: {},
+    textAlign?: 'left' | 'right' | 'center',
 };
-
-export default class Grid extends React.Component<PropsT> {
-    render() {
-        const {
-            centered,
-            children,
-            className,
-            fluid,
-            seamless,
-            style,
-            tagName: TagName = 'div',
-        } = this.props;
-
-        const classes = classNames(css.grid, className, {
-            [css.fluid]: fluid,
-            [css.seamless]: seamless,
-            [css.centered]: centered,
-        });
-
-        return (
-            <TagName className={classes} style={style}>
-                {children}
-            </TagName>
-        );
-    }
+export default function Row({
+    align,
+    centered,
+    children,
+    className,
+    el: Element = 'div',
+    justifyContent,
+    fluid,
+    seamless,
+    textAlign = 'left',
+    ...props
+}: PropsT) {
+    return (
+        <Element
+            className={classNames(
+                css.grid,
+                textAlign && css[`textAlign${ucfirst(textAlign)}`],
+                align && css[`align${ucfirst(align)}`],
+                justifyContent &&
+                    css[`justifyContent${ucfirst(justifyContent)}`],
+                className,
+                {
+                    [css.fluid]: fluid,
+                    [css.seamless]: seamless,
+                    [css.centered]: centered,
+                }
+            )}
+            {...props}
+        >
+            {children}
+        </Element>
+    );
 }

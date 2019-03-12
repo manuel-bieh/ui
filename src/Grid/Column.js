@@ -4,55 +4,36 @@ import classNames from 'classnames';
 import css from './Grid.module.css';
 import { ucfirst } from '../utils';
 
-// import css from 'css/layout/Grid.scss';
-
 type PropsT = {
-    tagName: string,
+    alignItems: 'start' | 'end' | 'center',
+    center: boolean,
     children: any,
     className: string,
-    style: {},
-    center: boolean,
-    box: boolean,
-    textAlign: 'left' | 'right' | 'center',
-    alignItems: 'start' | 'end' | 'center',
+    el: any,
     justifyContent: 'start' | 'end' | 'center',
-    variant: 'color' | 'light',
-    size: number | string,
+    style?: {},
+    textAlign: 'left' | 'right' | 'center',
+    // Available sizes
     xs: number | string,
     sm: number | string,
     md: number | string,
     lg: number | string,
     xl: number | string,
-    xsmall: number | string,
-    small: number | string,
-    medium: number | string,
-    large: number | string,
-    xlarge: number | string,
 };
 
 export default class Column extends React.PureComponent<PropsT> {
     render() {
-        const { columnClassName } = this.context;
         const {
             alignItems,
-            box,
             className,
             children,
             justifyContent,
-            tagName: TagName = 'div',
+            el: Element = 'div',
             textAlign,
             ...props
         } = this.props;
 
         const { xs = 12, sm, md, lg, xl } = props;
-
-        const {
-            'pad-xs': padXs,
-            'pad-sm': padSm,
-            'pad-md': padMd,
-            'pad-lg': padLg,
-            'pad-xl': padXl,
-        } = props;
 
         const sizeClass = classNames({
             [css[`colXs${xs}`]]: xs,
@@ -62,31 +43,20 @@ export default class Column extends React.PureComponent<PropsT> {
             [css[`colXl${xl}`]]: xl,
         });
 
-        const padClass = classNames({
-            [css[`colXsPad${padXs}`]]: typeof padXs !== 'undefined',
-            [css[`colSmPad${padSm}`]]: typeof padSm !== 'undefined',
-            [css[`colMdPad${padMd}`]]: typeof padMd !== 'undefined',
-            [css[`colLgPad${padLg}`]]: typeof padLg !== 'undefined',
-            [css[`colXlPad${padXl}`]]: typeof padXl !== 'undefined',
-        });
-
         return (
-            <TagName
+            <Element
                 className={classNames(
                     css.col,
                     sizeClass,
-                    padClass,
-                    columnClassName,
                     textAlign && css[`textAlign${ucfirst(textAlign)}`],
                     alignItems && css[`alignItems${ucfirst(alignItems)}`],
                     justifyContent &&
                         css[`justifyContent${ucfirst(justifyContent)}`],
-                    box && css.box,
                     className
                 )}
             >
                 {children}
-            </TagName>
+            </Element>
         );
     }
 }
