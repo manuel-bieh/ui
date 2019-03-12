@@ -97,7 +97,7 @@
             .grid {
                 width: calc(
                     100% + var(--grid-cell-padding-h) * 2 +
-                        var(--grid-cell-margin-h) / 2
+                        var(--grid-cell-margin-h)
                 );
                 margin: calc(
                         0px - var(--grid-cell-padding-v) -
