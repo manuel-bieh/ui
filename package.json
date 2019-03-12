@@ -1,6 +1,6 @@
 {
   "name": "@manuel-bieh/ui",
-  "version": "1.1.10",
+  "version": "1.2.0",
   "author": "Manuel Bieh <info@manuelbieh.de> (https://github.com/manuelbieh)",
   "license": "MIT",
   "main": "dist/main.js",
