@@ -26,8 +26,6 @@
     "imagemin:tech": "imagemin src/assets/img/tech/* --out-dir=assets/img/tech",
     "imagemin": "concurrently \"yarn imagemin:clients\" \"yarn imagemin:social-media\" \"yarn imagemin:tech\"",
     "lint": "eslint ./src",
-    "postmerge": "install-deps-postmerge",
-    "precommit": "lint-staged",
     "release": "semantic-release --no-ci",
     "postversion": "yarn build",
     "postrelease": "git push origin master --follow-tags",
@@ -161,5 +159,11 @@
   },
   "peerDependencies": {
     "classnames": "^2.2.6"
+  },
+  "husky": {
+    "hooks": {
+      "post-merge": "install-deps-postmerge",
+      "pre-commit": "lint-staged"
+    }
   }
 }
