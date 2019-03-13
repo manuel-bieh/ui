@@ -1,86 +1,112 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const generateSourceMap = process.env.OMIT_SOURCEMAP === 'true' ? false : true;
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
 
 const babelLoader = {
-    test: /\.(js|jsx)$/,
+    test: /\.(js|jsx|mjs)$/,
     exclude: /node_modules/,
-    loader: 'babel-loader',
+    loader: require.resolve('babel-loader'),
+    options: {
+        plugins: [
+            [
+                require.resolve('babel-plugin-named-asset-import'),
+                {
+                    loaderMap: {
+                        svg: {
+                            ReactComponent:
+                                '@svgr/webpack?-prettier,-svgo![path]',
+                        },
+                    },
+                },
+            ],
+        ],
+        cacheDirectory: true,
+        cacheCompression: process.env.NODE_ENV === 'production',
+        compact: process.env.NODE_ENV === 'production',
+    },
 };
 
-const cssLoaderClient = {
-    test: /\.css$/,
-    exclude: /node_modules/,
+const cssModuleLoader = {
+    test: cssModuleRegex,
     use: [
-        'css-hot-loader',
-        MiniCssExtractPlugin.loader,
+        require.resolve('css-hot-loader'),
+        process.env.NODE_ENV === 'production'
+            ? MiniCssExtractPlugin.loader
+            : require.resolve('style-loader'),
         {
-            loader: 'css-loader',
+            loader: require.resolve('css-loader'),
             options: {
                 camelCase: true,
                 modules: true,
                 importLoaders: 1,
-                sourceMap: true,
-                localIdentName: '[name]__[local]--[hash:base64:5]',
+                sourceMap: generateSourceMap,
+                // localIdentName: '[name]__[local]--[hash:base64:5]',
+                getLocalIdent: getCSSModuleLocalIdent,
             },
         },
         {
-            loader: 'postcss-loader',
+            loader: require.resolve('postcss-loader'),
             options: {
-                sourceMap: true,
+                sourceMap: generateSourceMap,
             },
         },
     ],
 };
 
-const urlLoaderClient = {
+const cssLoader = {
+    test: cssRegex,
+    exclude: cssModuleRegex,
+    use: [
+        require.resolve('css-hot-loader'),
+        process.env.NODE_ENV === 'production'
+            ? MiniCssExtractPlugin.loader
+            : require.resolve('style-loader'),
+        require.resolve('css-loader'),
+        {
+            loader: require.resolve('postcss-loader'),
+            options: {
+                sourceMap: generateSourceMap,
+            },
+        },
+    ],
+};
+
+const urlLoader = {
     test: /\.(png|jpe?g|gif|svg)$/,
+    loader: require.resolve('url-loader'),
+    options: {
+        limit: 2048,
+        name: 'assets/[name].[hash:8].[ext]',
+    },
+};
+
+const fileLoader = {
+    exclude: [/\.(js|css|mjs|html|ejs|json|md)$/],
     use: [
         {
-            loader: require.resolve('url-loader'),
+            loader: require.resolve('file-loader'),
             options: {
-                name: 'assets/[name].[ext]',
-                limit: 2048,
-            },
-        },
-        {
-            loader: 'image-webpack-loader',
-            options: {
-                // disable: true,
+                name: 'assets/[name].[hash:8].[ext]',
             },
         },
     ],
-};
-
-const fileLoaderClient = {
-    exclude: [/\.(js|css|mjs|html|json|ejs)$/],
-    use: [
-        {
-            loader: 'file-loader',
-            options: {
-                name: 'assets/[name].[ext]',
-            },
-        },
-    ],
-};
-
-// Write css files from node_modules to its own vendor.css file
-const externalCssLoaderClient = {
-    test: /\.css$/,
-    include: /node_modules/,
-    use: [MiniCssExtractPlugin.loader, 'css-loader'],
 };
 
 const client = [
     {
-        oneOf: [
-            babelLoader,
-            cssLoaderClient,
-            urlLoaderClient,
-            fileLoaderClient,
-            externalCssLoaderClient,
-        ],
+        oneOf: [babelLoader, cssModuleLoader, cssLoader, urlLoader, fileLoader],
     },
 ];
 
 module.exports = {
     client,
+    cssModuleLoader,
+    cssLoader,
 };
+
+// module.exports.fileLoader = fileLoader;
+// module.exports.cssModuleLoader = cssModuleLoader;
+// module.exports.cssLoader = cssLoader;

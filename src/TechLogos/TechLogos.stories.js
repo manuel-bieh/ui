@@ -4,6 +4,6 @@ import Hierarchy from '../../.storybook/hierarchyGroups';
 
 import TechLogos from '.';
 
-storiesOf(`${Hierarchy.COMPONENTS}|TechLogos`).addWithJSX('Default', () => (
+storiesOf(`${Hierarchy.COMPONENTS}|TechLogos`).add('Default', () => (
     <TechLogos />
 ));

@@ -4,7 +4,7 @@ import Hierarchy from '../../.storybook/hierarchyGroups';
 
 import SocialMediaIcons from '.';
 
-storiesOf(`${Hierarchy.COMPONENTS}|SocialMediaIcons`, module).addWithJSX(
+storiesOf(`${Hierarchy.COMPONENTS}|SocialMediaIcons`, module).add(
     'Default',
     () => <SocialMediaIcons />
 );

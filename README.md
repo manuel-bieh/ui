@@ -6,7 +6,12 @@ React UI components for my personal website, portfolio, CV, etc.
 
 ```sh
 yarn
-# or npm install
+```
+
+or
+
+```sh
+npm install
 ```
 
 Do yourself a favor and setup and configure [EditorConfig](https://editorconfig.org/), a [linter](https://eslint.org/docs/user-guide/integrations#editors) and [Prettier](https://prettier.io/docs/en/editors.html) in your editor/IDE before working on this project. Otherwise all of that will be handled by [`lint-staged`](https://github.com/okonet/lint-staged) automatically before each commit and might get your commit rejected. This is to avoid avoidable errors and to make sure to have a clean and consistent codebase.

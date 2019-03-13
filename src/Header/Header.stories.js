@@ -4,7 +4,6 @@ import Hierarchy from '../../.storybook/hierarchyGroups';
 
 import Header from '.';
 
-storiesOf(`${Hierarchy.LAYOUT}|Header`, module).addWithJSX(
-    'With some content',
-    () => <Header>Content</Header>
-);
+storiesOf(`${Hierarchy.LAYOUT}|Header`, module).add('With some content', () => (
+    <Header>Content</Header>
+));
