@@ -1,15 +1,14 @@
 import React from 'react';
-import { configure, setAddon, addDecorator } from '@storybook/react';
-import { setOptions } from '@storybook/addon-options';
-// import { withInfo } from '@storybook/addon-info';
-import JSXAddon from 'storybook-addon-jsx';
-import './intro';
+import {
+    configure,
+    setAddon,
+    addDecorator,
+    addParameters,
+} from '@storybook/react';
+import './stories/intro';
 
-setAddon(JSXAddon);
+import '../src/index.module.css';
 
-// addDecorator(withInfo);
-
-// Add some padding to our stories
 addDecorator((storyFn) => (
     <div className="globalPadding" style={{ padding: 16 }}>
         {storyFn()}
@@ -27,11 +26,13 @@ export const resetPadding = (storyFn) => (
     </React.Fragment>
 );
 
-setOptions({
-    name: 'ManuelBieh UI',
-    url: 'https://www.manuelbieh.com',
-    hierarchySeparator: /\//,
-    hierarchyRootSeparator: /\|/,
+addParameters({
+    options: {
+        name: 'ManuelBieh UI',
+        url: 'https://www.github.com/manuel-bieh/ui',
+        hierarchySeparator: /\//,
+        hierarchyRootSeparator: /\|/,
+    },
 });
 
 const req = require.context('../src', true, /.stories.js$/);

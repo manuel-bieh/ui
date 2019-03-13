@@ -5,7 +5,7 @@ import { Grid, Column } from '.';
 import css from './Grid.module.css';
 
 storiesOf(`${Hierarchy.LAYOUT}|Grid`, module)
-    .addWithJSX('Fixed max width', () => (
+    .add('Fixed max width', () => (
         <Grid className={css.debug}>
             <Column xs={12} sm={6} md={4} lg={3} xl={2} className={css.debug}>
                 1
@@ -27,7 +27,7 @@ storiesOf(`${Hierarchy.LAYOUT}|Grid`, module)
             </Column>
         </Grid>
     ))
-    .addWithJSX('Fluid width', () => (
+    .add('Fluid width', () => (
         <Grid fluid className={css.debug}>
             <Column xs={12} sm={6} md={4} lg={3} xl={2} className={css.debug}>
                 1
@@ -49,14 +49,28 @@ storiesOf(`${Hierarchy.LAYOUT}|Grid`, module)
             </Column>
         </Grid>
     ))
-    .addWithJSX('Aligned columns', () => (
-        <Grid className={css.debug}>
-            <Column xs={4} className={css.debug}>
-                Centered column
-            </Column>
-        </Grid>
+    .add('Aligned columns', () => (
+        <>
+            <Grid className={css.debug} justifyContent="start">
+                <Column xs={4} className={css.debug}>
+                    Left column
+                </Column>
+            </Grid>
+            <br />
+            <Grid className={css.debug} justifyContent="center">
+                <Column xs={4} className={css.debug}>
+                    Centered column
+                </Column>
+            </Grid>
+            <br />
+            <Grid className={css.debug} justifyContent="end">
+                <Column xs={4} className={css.debug}>
+                    Right column
+                </Column>
+            </Grid>
+        </>
     ))
-    .addWithJSX('12 units with fixed width', () => (
+    .add('12 units with fixed width', () => (
         <Grid className={css.debug}>
             <Column xs={12} sm={6} md={4} lg={3} xl={2} className={css.debug}>
                 1
@@ -96,7 +110,7 @@ storiesOf(`${Hierarchy.LAYOUT}|Grid`, module)
             </Column>
         </Grid>
     ))
-    .addWithJSX('Nested grid', () => (
+    .add('Nested grid', () => (
         <Grid className={css.debug}>
             <Column xs={12} sm={6} md={5} lg={4} xl={3} className={css.debug}>
                 1
@@ -143,7 +157,7 @@ storiesOf(`${Hierarchy.LAYOUT}|Grid`, module)
             </Column>
         </Grid>
     ))
-    .addWithJSX('More nested grid', () => (
+    .add('More nested grid', () => (
         <>
             <Grid className={css.debug}>
                 <Column xs={6} className={css.debug}>

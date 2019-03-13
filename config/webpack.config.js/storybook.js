@@ -1,27 +1,23 @@
-const { client: loaders } = require('./loaders');
+// const { client: loaders } = require('./loaders');
 const { client: plugins } = require('./plugins');
+const { cssModuleLoader, cssLoader } = require('./loaders');
 
-module.exports = (storybookBaseConfig) => {
-    storybookBaseConfig.plugins = [...storybookBaseConfig.plugins, ...plugins];
-    storybookBaseConfig.module.rules = [
-        ...storybookBaseConfig.module.rules,
-        ...loaders,
+module.exports = async ({ config }) => {
+    config.plugins = [...config.plugins, ...plugins];
+    config.module.rules = [
+        ...config.module.rules.filter((rule) => {
+            return rule.test.toString() !== '/\\.css$/';
+        }),
         {
-            test: /\.stories\.jsx?$/,
-            loaders: [
-                {
-                    loader: require.resolve(
-                        '@storybook/addon-storysource/loader'
-                    ),
-                    // Options are necessary because of this issue:
-                    // https://github.com/storybooks/storybook/issues/3681
-                    options: { prettierConfig: { parser: 'babel' } },
-                },
-            ],
-            enforce: 'pre',
+            oneOf: [cssModuleLoader, cssLoader],
         },
     ];
 
-    storybookBaseConfig.mode = 'development';
-    return storybookBaseConfig;
+    config.module.rules.push({
+        test: /\.stories\.jsx?$/,
+        loaders: [require.resolve('@storybook/addon-storysource/loader')],
+        enforce: 'pre',
+    });
+
+    return config;
 };
