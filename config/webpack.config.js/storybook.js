@@ -15,7 +15,7 @@ module.exports = (storybookBaseConfig) => {
                     ),
                     // Options are necessary because of this issue:
                     // https://github.com/storybooks/storybook/issues/3681
-                    options: { prettierConfig: { parser: 'babylon' } },
+                    options: { prettierConfig: { parser: 'babel' } },
                 },
             ],
             enforce: 'pre',

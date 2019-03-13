@@ -1,29 +1,24 @@
 export default [
     {
-        name: 'Aperto',
-        image: 'aperto.svg',
-        url: 'https://www.aperto.de/',
-    },
-    {
-        name: 'Rossmann',
-        image: 'rossmann.svg',
-        url: 'https://www.rossmann.de/',
-    },
-    {
-        name: 'Migros',
-        image: 'migros.svg',
-        url: 'https://www.migros.ch/',
-    },
-    {
-        name: 'C3 – Creative Code and Content',
-        image: 'c3.svg',
-        url: 'https://www.c3.co/',
-    },
-    {
         name: 'Porsche',
         image: 'porsche.svg',
         url:
             'https://www.porsche.com/germany/aboutporsche/service/porschedigitallab/',
+    },
+    {
+        name: 'ProSiebenSat1 Digital',
+        image: 'pro7sat1digital.svg',
+        url: 'https://www.prosiebensat1digital.de/',
+    },
+    {
+        name: 'Zalando',
+        image: 'zalando.svg',
+        url: 'https://www.zalando.de/',
+    },
+    {
+        name: 'Daimler',
+        image: 'daimler.svg',
+        url: 'https://www.lab1886.com/',
     },
     {
         name: 'Handelsblatt',
@@ -36,9 +31,39 @@ export default [
         url: 'http://www.wiwo.de/',
     },
     {
+        name: 'Rheinische Post Online',
+        image: 'rheinischepost.svg',
+        url: 'http://www.rp-online.de/',
+    },
+    {
+        name: 'Rossmann',
+        image: 'rossmann.svg',
+        url: 'https://www.rossmann.de/',
+    },
+    {
         name: 'Klarna',
         image: 'klarna.svg',
         url: 'https://www.klarna.com/',
+    },
+    {
+        name: 'TomTom Telematics',
+        image: 'tomtom.svg',
+        url: 'https://telematics.tomtom.com/de_de/webfleet/products/webfleet/',
+    },
+    {
+        name: 'Migros',
+        image: 'migros.svg',
+        url: 'https://www.migros.ch/',
+    },
+    {
+        name: 'Aperto',
+        image: 'aperto.svg',
+        url: 'https://www.aperto.de/',
+    },
+    {
+        name: 'C3 – Creative Code and Content',
+        image: 'c3.svg',
+        url: 'https://www.c3.co/',
     },
     {
         name: 'Fotocommunity.de',
@@ -55,21 +80,7 @@ export default [
         image: 'docmorris.svg',
         url: 'https://www.docmorris.de/',
     },
-    {
-        name: 'ProSiebenSat1 Digital',
-        image: 'pro7sat1digital.svg',
-        url: 'https://www.prosiebensat1digital.de/',
-    },
-    {
-        name: 'Rheinische Post Online',
-        image: 'rheinischepost.svg',
-        url: 'http://www.rp-online.de/',
-    },
-    {
-        name: 'TomTom Telematics',
-        image: 'tomtom.svg',
-        url: 'https://telematics.tomtom.com/de_de/webfleet/products/webfleet/',
-    },
+
     {
         name: 'Sevenval Technologies GmbH',
         image: 'sevenval.svg',
@@ -99,10 +110,5 @@ export default [
         name: 'Zeotap GmbH',
         image: 'zeotap.svg',
         url: 'https://www.zeotap.com/',
-    },
-    {
-        name: 'Zalando',
-        image: 'zalando.svg',
-        url: 'https://www.zalando.de/',
     },
 ];
