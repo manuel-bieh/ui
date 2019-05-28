@@ -9,7 +9,7 @@ module.exports = {
     name: 'client',
     target: 'web',
     entry: {
-        main: path.join(paths.src, 'index.js'),
+        main: path.join(paths.src, 'index.ts'),
     },
     output: {
         path: path.join(paths.clientBuild, paths.publicPath),

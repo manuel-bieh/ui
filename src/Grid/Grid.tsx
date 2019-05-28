@@ -1,19 +1,18 @@
-// @flow
 import React from 'react';
 import classNames from 'classnames';
-import css from './Grid.module.css';
 import { ucfirst } from '../utils';
+import css from './Grid.module.css';
 
 type PropsT = {
-    align?: 'start' | 'end' | 'stretch' | 'center',
-    centered?: boolean,
-    children: any,
-    className?: string,
-    el: any,
-    fluid: boolean,
-    justifyContent?: 'start' | 'end' | 'center',
-    seamless?: boolean,
-    textAlign?: 'left' | 'right' | 'center',
+    align?: 'start' | 'end' | 'stretch' | 'center';
+    centered?: boolean;
+    children: any;
+    className?: string;
+    el: any;
+    fluid: boolean;
+    justifyContent?: 'start' | 'end' | 'center';
+    seamless?: boolean;
+    textAlign?: 'left' | 'right' | 'center';
 };
 export default function Row({
     align,

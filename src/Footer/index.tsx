@@ -1,9 +1,8 @@
-// @flow
 import * as React from 'react';
 import css from './Footer.module.css';
 
 type PropsT = {
-    children: any,
+    children: any;
 };
 
 const Footer = ({ children }: PropsT) => {
