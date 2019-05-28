@@ -15,7 +15,9 @@
     "path": "semantic-release-conventional-commits",
     "majorTypes": [
       "major",
-      "breaking"
+      "breaking",
+      "MAJOR",
+      "BREAKING"
     ],
     "minorTypes": [
       "feat",

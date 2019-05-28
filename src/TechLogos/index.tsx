@@ -13,6 +13,7 @@ const TechLogos = ({ className }: PropsT) => (
             <img
                 key={tech}
                 alt={`Logo: ${tech}`}
+                className={`tech-logo--${tech}`}
                 src={require(`../../assets/img/tech/${tech}`)}
             />
         ))}
