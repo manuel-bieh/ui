@@ -6,7 +6,7 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 
 const babelLoader = {
-    test: /\.(js|jsx|mjs)$/,
+    test: /\.(js|jsx|ts|tsx|mjs)$/,
     exclude: /node_modules/,
     loader: require.resolve('babel-loader'),
     options: {
@@ -84,7 +84,7 @@ const urlLoader = {
 };
 
 const fileLoader = {
-    exclude: [/\.(js|css|mjs|html|ejs|json|md)$/],
+    exclude: [/\.(js|jsx|ts|tsx|css|mjs|html|ejs|json|md)$/],
     use: [
         {
             loader: require.resolve('file-loader'),

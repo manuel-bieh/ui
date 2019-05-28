@@ -4,6 +4,17 @@ const { cssModuleLoader, cssLoader } = require('./loaders');
 
 module.exports = async ({ config }) => {
     config.plugins = [...config.plugins, ...plugins];
+    config.resolve.extensions = config.resolve.extensions.concat([
+        '.ts',
+        '.tsx',
+    ]);
+
+    config.module.rules.push({
+        test: /\.(ts|tsx)$/,
+        use: [{ loader: 'babel-loader' }],
+        exclude: /node_modules/,
+    });
+
     config.module.rules = [
         ...config.module.rules.filter((rule) => {
             return rule.test.toString() !== '/\\.css$/';

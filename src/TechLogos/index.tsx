@@ -1,11 +1,10 @@
-// @flow
 import * as React from 'react';
+import classNames from 'classnames';
 import techLogos from './logos';
 import css from './TechLogos.module.css';
-import classNames from 'classnames';
 
 type PropsT = {
-    className?: string,
+    className?: string;
 };
 
 const TechLogos = ({ className }: PropsT) => (

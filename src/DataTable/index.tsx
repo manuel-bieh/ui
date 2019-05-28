@@ -1,12 +1,11 @@
-// @flow
 import * as React from 'react';
 import css from './DataTable.module.css';
 
-type DataTableItem = [React.Element<any> | string, React.Element<any> | string];
+type DataTableItem = [any, any];
 
 type PropsT = {
-    data: DataTableItem[],
-    columnClassNames?: [string, string],
+    data: DataTableItem[];
+    columnClassNames?: [string, string];
 };
 
 const DataTable = ({ data, columnClassNames }: PropsT) => (
