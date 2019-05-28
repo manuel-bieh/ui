@@ -1,6 +1,6 @@
 {
   "verifyConditions": [
-    "@semantic-release/npm", 
+    "@semantic-release/npm",
     "@semantic-release/git"
   ],
   "prepare": [
@@ -24,6 +24,8 @@
     ],
     "patchTypes": [
       "fix",
+      "hotfix",
+      "bugfix",
       "chore",
       "patch"
     ],
