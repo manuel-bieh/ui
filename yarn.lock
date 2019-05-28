@@ -7805,9 +7805,10 @@ inquirer@^6.2.0, inquirer@^6.2.2:
     strip-ansi "^5.0.0"
     through "^2.3.6"
 
-install-deps-postmerge@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/install-deps-postmerge/-/install-deps-postmerge-1.0.2.tgz#fabff60160744fab0fbb0ffeaa22d07fcf44c1ac"
+install-deps-postmerge@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/install-deps-postmerge/-/install-deps-postmerge-1.0.3.tgz#1c35e5a6d83c7922c9b21befbeb0cd1bf92faf5f"
+  integrity sha512-vEjiyycq2XOzt+4qawp4u9/5OuiDOCRsZPSzkKpihSU9K95xN3eiPNf9GQe3VxAB6jSJc40x+kebVH5MkvHkFA==
   dependencies:
     execa "^0.8.0"
     yarn-or-npm "^2.0.4"
