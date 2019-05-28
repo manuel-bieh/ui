@@ -1,4 +1,8 @@
-export const TEXTSIZES = {
+type Textsizes = {
+    [key: string]: number;
+};
+
+export const TEXTSIZES: Textsizes = {
     xsmall: 12,
     small: 15,
     medium: 17,

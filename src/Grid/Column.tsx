@@ -1,24 +1,23 @@
-// @flow
 import React from 'react';
 import classNames from 'classnames';
-import css from './Grid.module.css';
 import { ucfirst } from '../utils';
+import css from './Grid.module.css';
 
 type PropsT = {
-    alignItems: 'start' | 'end' | 'center',
-    center: boolean,
-    children: any,
-    className: string,
-    el: any,
-    justifyContent: 'start' | 'end' | 'center',
-    style?: {},
-    textAlign: 'left' | 'right' | 'center',
+    alignItems: 'start' | 'end' | 'center';
+    center: boolean;
+    children: any;
+    className: string;
+    el: any;
+    justifyContent: 'start' | 'end' | 'center';
+    style?: {};
+    textAlign: 'left' | 'right' | 'center';
     // Available sizes
-    xs: number | string,
-    sm: number | string,
-    md: number | string,
-    lg: number | string,
-    xl: number | string,
+    xs: number | string;
+    sm: number | string;
+    md: number | string;
+    lg: number | string;
+    xl: number | string;
 };
 
 export default class Column extends React.PureComponent<PropsT> {

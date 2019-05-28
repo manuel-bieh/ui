@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Hierarchy from '../../.storybook/hierarchyGroups';
-import { Grid, Column } from '.';
 import css from './Grid.module.css';
+import { Grid, Column } from '.';
 
 storiesOf(`${Hierarchy.LAYOUT}|Grid`, module)
     .add('Fixed max width', () => (
