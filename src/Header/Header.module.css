@@ -34,7 +34,7 @@
     }
 }
 
-/* This is a hack that required because Save to PDF in Chrome blurs out CSS gradients */
+/* This is a hack that is required because Save to PDF in Chrome blurs out CSS gradients */
 @media print {
     .wrapper:after {
         background: url(../../assets/img/faux-bg.svg) no-repeat top left;
