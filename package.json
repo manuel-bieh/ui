@@ -21,7 +21,7 @@
     "build:types": "tsc --outDir es --emitDeclarationOnly --noEmit false --declaration",
     "build:withStats": "cross-env NODE_ENV=production webpack --config config/webpack.config.js/client.prod.js --json > bundle-stats.json",
     "build:watch": "cross-env NODE_ENV=development node scripts/build.js --watch",
-    "clean": "concurrently \"yarn clean:es\" && \"yarn clean:compiled\" \"yarn clean:assets\"",
+    "clean": "concurrently \"yarn clean:es\" \"yarn clean:compiled\" \"yarn clean:assets\"",
     "clean:es": "rimraf ./es",
     "clean:compiled": "rimraf ./dist",
     "clean:assets": "rimraf ./assets",
