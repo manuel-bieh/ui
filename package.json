@@ -14,7 +14,7 @@
     "analyze": "yarn build:withStats && yarn analyze:bundle",
     "analyze:bundle": "webpack-bundle-analyzer bundle-stats.json -p 8889",
     "babel:build": "babel -d es ./src --extensions .ts,.tsx,.js,.jsx --no-comments src --minified --ignore **/*.d.ts",
-    "babel:watch": "babel -d es ./src --watch --extensions .ts,.tsx,.js,.jsx",
+    "babel:watch": "babel -d es ./src --extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --watch",
     "build": "yarn clean && concurrently \"yarn imagemin\" \"yarn build:es\" \"yarn build:compiled\" \"yarn build:types\"",
     "build:es": "yarn transpile",
     "build:compiled": "cross-env NODE_ENV=production node scripts/build.js",

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import css from './SocialMediaIcons.module.css';
 import {
     Github,
     Twitter,
@@ -10,15 +9,20 @@ import {
     AngelList,
 } from './Icons';
 
-const SocialMediaIcons = () => (
-    <section className={css.wrapper}>
-        <Github />
-        <Twitter />
-        <Xing />
-        <Linkedin />
-        <Instagram />
-        <Quora />
-        <AngelList />
+type Props = {
+    className?: string;
+    iconClassName?: string;
+};
+
+const SocialMediaIcons = ({ className, iconClassName }: Props) => (
+    <section className={className}>
+        <Github className={iconClassName} />
+        <Twitter className={iconClassName} />
+        <Linkedin className={iconClassName} />
+        <Xing className={iconClassName} />
+        <Instagram className={iconClassName} />
+        <Quora className={iconClassName} />
+        <AngelList className={iconClassName} />
     </section>
 );
 

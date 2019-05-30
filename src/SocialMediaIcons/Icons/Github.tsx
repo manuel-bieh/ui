@@ -1,13 +1,19 @@
 import * as React from 'react';
-import css from '../SocialMediaIcons.module.css';
+import classNames from 'classnames';
+import css from './Icons.module.css';
+import { IconProps } from './types';
 
-const Github = () => (
-    <a href="https://www.github.com/manuelbieh">
+const Github = ({ className, label }: IconProps) => (
+    <a
+        href="https://www.github.com/manuelbieh"
+        className={classNames(className, css.wrapper)}
+    >
         <img
             alt="Logo: Github"
             src={require('../../../assets/img/social-media/github.svg')}
             className={css.icon}
-        />{' '}
+        />
+        {label && <span>{label}</span>}
     </a>
 );
 

@@ -1,0 +1,12 @@
+.wrapper {
+    text-decoration: none;
+    white-space: pre;
+}
+
+.icon {
+    height: 32px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    vertical-align: middle;
+    width: 32px;
+}

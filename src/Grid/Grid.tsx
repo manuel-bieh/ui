@@ -8,8 +8,8 @@ type PropsT = {
     centered?: boolean;
     children: any;
     className?: string;
-    el: any;
-    fluid: boolean;
+    el?: any;
+    fluid?: boolean;
     justifyContent?: 'start' | 'end' | 'center';
     seamless?: boolean;
     textAlign?: 'left' | 'right' | 'center';
