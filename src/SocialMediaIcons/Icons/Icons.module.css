@@ -5,8 +5,9 @@
 
 .icon {
     height: 32px;
-    margin-right: 4px;
     margin-bottom: 4px;
+    margin-right: 4px;
     vertical-align: middle;
+    /* vertical-align: -60%; */
     width: 32px;
 }

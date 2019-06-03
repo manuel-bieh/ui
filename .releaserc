@@ -26,6 +26,7 @@
     ],
     "patchTypes": [
       "fix",
+      "fixed",
       "hotfix",
       "bugfix",
       "chore",

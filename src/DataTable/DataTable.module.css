@@ -1,7 +1,8 @@
 .wrapper {
     border-collapse: collapse;
-    /* line-height: 11.5pt; */
     margin: 0 0 1em 0;
+    /* line-height: 11.5pt; */
+    page-break-inside: avoid;
     width: 100%;
 
     tr:nth-child(2n) td {
@@ -9,6 +10,7 @@
     }
 
     td {
+        border-bottom: 1px solid #ddd;
         padding: 5px;
     }
 }
