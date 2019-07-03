@@ -1,4 +1,10 @@
-import * as React from 'react';
+import React, {
+    useCallback,
+    useEffect,
+    useMemo,
+    useReducer,
+    useRef,
+} from 'react';
 import { Provider } from './context';
 import formReducer from './reducer';
 import * as actions from './actions';
@@ -54,33 +60,35 @@ const Form = ({
     onUnmount,
     validation,
 }: Props) => {
-    const form = React.useRef<any>();
+    const form = useRef<any>();
 
-    const [state, dispatch] = React.useReducer(formReducer, {
+    const initialState = {
         values: initialValues || {},
-    });
+    };
 
-    const submit = React.useCallback(() => {
+    const [state, dispatch] = useReducer(formReducer, initialState);
+
+    const submit = useCallback(() => {
         console.log('sending stuff');
     }, []);
 
-    const onSubmit = React.useCallback((e) => {
+    const onSubmit = useCallback((e) => {
         e.preventDefault();
     }, []);
 
-    const setValue = React.useCallback((property: string, value: any) => {
+    const setValue = useCallback((property: string, value: any) => {
         dispatch(actions.setValue(property, value));
     }, []);
 
-    const setErrors = React.useCallback((errors: ErrorsObject) => {
+    const setErrors = useCallback((errors: ErrorsObject) => {
         dispatch(actions.setErrors(errors));
     }, []);
 
-    const resetFieldError = React.useCallback((fieldName: string) => {
+    const resetFieldError = useCallback((fieldName: string) => {
         dispatch(actions.resetFieldError(fieldName));
     }, []);
 
-    const validate = React.useCallback(async () => {
+    const validate = useCallback(async () => {
         const { values } = state;
 
         if (typeof validation !== 'function') {
@@ -103,7 +111,7 @@ const Form = ({
         }
     }, [state, validation]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (typeof onMount === 'function') {
             onMount({ id, state });
         }
@@ -115,7 +123,7 @@ const Form = ({
         };
     }, [id, onMount, onUnmount, state]);
 
-    const contextValue = React.useMemo(
+    const contextValue = useMemo(
         () => ({
             id,
             errors: state.errors,

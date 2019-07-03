@@ -10,7 +10,7 @@ const Github = ({ className, label }: IconProps) => (
     >
         <img
             alt="Logo: Github"
-            src={require('../../../assets/img/social-media/github.svg')}
+            src={require('../../assets/img/social-media/github.svg')}
             className={css.icon}
         />
         {label && <span>{label}</span>}

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { ucfirst } from '../utils';
 import css from './Grid.module.css';
 
-type PropsT = {
+type Props = {
     alignItems?: 'start' | 'end' | 'center';
     center?: boolean;
     children?: any;
     className?: string;
-    el?: any;
+    element?: any;
     justifyContent?: 'start' | 'end' | 'center';
     style?: {};
     textAlign?: 'left' | 'right' | 'center';
@@ -20,42 +20,43 @@ type PropsT = {
     xl?: number | string;
 };
 
-export default class Column extends React.PureComponent<PropsT> {
-    render() {
-        const {
-            alignItems,
-            className,
-            children,
-            justifyContent,
-            el: Element = 'div',
-            textAlign,
-            ...props
-        } = this.props;
+const Column = ({
+    alignItems,
+    className,
+    children,
+    justifyContent,
+    element: Element = 'div',
+    textAlign,
+    ...props
+}: Props) => {
+    const { xs = 12, sm, md, lg, xl } = props;
 
-        const { xs = 12, sm, md, lg, xl } = props;
-
-        const sizeClass = classNames({
+    const sizeClass = useMemo(
+        () => ({
             [css[`colXs${xs}`]]: xs,
             [css[`colSm${sm}`]]: sm,
             [css[`colMd${md}`]]: md,
             [css[`colLg${lg}`]]: lg,
             [css[`colXl${xl}`]]: xl,
-        });
+        }),
+        [lg, md, sm, xl, xs]
+    );
 
-        return (
-            <Element
-                className={classNames(
-                    css.col,
-                    sizeClass,
-                    textAlign && css[`textAlign${ucfirst(textAlign)}`],
-                    alignItems && css[`alignItems${ucfirst(alignItems)}`],
-                    justifyContent &&
-                        css[`justifyContent${ucfirst(justifyContent)}`],
-                    className
-                )}
-            >
-                {children}
-            </Element>
-        );
-    }
-}
+    return (
+        <Element
+            className={classNames(
+                css.col,
+                sizeClass,
+                textAlign && css[`textAlign${ucfirst(textAlign)}`],
+                alignItems && css[`alignItems${ucfirst(alignItems)}`],
+                justifyContent &&
+                    css[`justifyContent${ucfirst(justifyContent)}`],
+                className
+            )}
+        >
+            {children}
+        </Element>
+    );
+};
+
+export default Column;

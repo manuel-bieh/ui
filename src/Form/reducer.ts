@@ -1,6 +1,8 @@
 import { produce } from 'immer';
 
-export const initialState = Object.freeze({
+type State = { [key: string]: any };
+
+export const initialState: State = Object.freeze({
     errors: undefined,
     externalErrors: undefined,
     // form: null | any,
@@ -16,7 +18,7 @@ export const initialState = Object.freeze({
 });
 
 export default (state: any = initialState, action: any) =>
-    produce(state, (draft) => {
+    produce(state, (draft: State) => {
         switch (action.type) {
             case 'SET_VALUES': {
                 draft.values = action.payload;

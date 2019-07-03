@@ -10,7 +10,7 @@ const AngelList = ({ className, label }: IconProps) => (
     >
         <img
             alt="Logo: AngelList"
-            src={require('../../../assets/img/social-media/angellist.svg')}
+            src={require('../../assets/img/social-media/angellist.svg')}
             className={css.icon}
         />
         {label && <span>{label}</span>}

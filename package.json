@@ -4,8 +4,12 @@
   "author": "Manuel Bieh <info@manuelbieh.de> (https://github.com/manuelbieh)",
   "homepage": "https://www.github.com/manuel-bieh/ui",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "es/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "publishConfig": {
+    "tag": "beta"
+  },
   "engines": {
     "node": ">=8.12.0",
     "yarn": "^1.10.0"
@@ -13,30 +17,29 @@
   "scripts": {
     "analyze": "yarn build:withStats && yarn analyze:bundle",
     "analyze:bundle": "webpack-bundle-analyzer bundle-stats.json -p 8889",
-    "babel:build": "babel -d es ./src --extensions .ts,.tsx,.js,.jsx --no-comments src --minified --ignore **/*.d.ts",
-    "babel:watch": "babel -d es ./src --extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --watch",
-    "build": "cross-env NODE_ENV=production yarn clean && yarn imagemin && concurrently \"yarn copy\" \"yarn build:es\" \"yarn build:compiled\" \"yarn build:types\"",
+    "babel:build": "babel -d dist/es ./src --extensions .ts,.tsx,.js,.jsx --no-comments src --minified --ignore **/*.d.ts",
+    "babel:watch": "babel -d dist/es ./src --extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --watch",
+    "build": "cross-env NODE_ENV=production yarn clean && yarn imagemin && concurrently \"yarn copy\" \"yarn build:es\" \"yarn build:bundle\" \"yarn build:types\"",
     "build:es": "yarn transpile",
-    "build:compiled": "cross-env NODE_ENV=production node scripts/build.js",
-    "build:types": "tsc --outDir es --emitDeclarationOnly --noEmit false --declaration",
+    "build:bundle": "cross-env NODE_ENV=production node scripts/build.js",
+    "build:types": "tsc --outDir dist/es --emitDeclarationOnly --noEmit false --declaration --allowJs false --checkJs false",
     "build:withStats": "cross-env NODE_ENV=production webpack --config config/webpack.config.js/client.prod.js --json > bundle-stats.json",
     "build:watch": "cross-env NODE_ENV=development node scripts/build.js --watch",
-    "clean": "concurrently \"yarn clean:es\" \"yarn clean:compiled\" \"yarn clean:assets\"",
-    "clean:es": "rimraf ./es",
-    "clean:compiled": "rimraf ./dist",
-    "clean:assets": "rimraf ./assets",
+    "clean": "rimraf ./dist",
     "copy": "yarn copy:fonts",
-    "copy:fonts": "cpy src/assets/fonts assets/fonts",
-    "imagemin:clients": "imagemin src/assets/img/clients/* --out-dir=assets/img/clients",
-    "imagemin:social-media": "imagemin src/assets/img/social-media/* --out-dir=assets/img/social-media",
-    "imagemin:tech": "imagemin src/assets/img/tech/* --out-dir=assets/img/tech",
-    "imagemin:misc": "imagemin src/assets/img/* --out-dir assets/img",
+    "copy:fonts": "cpy src/assets/fonts dist/es/assets/fonts",
+    "imagemin:clients": "imagemin src/assets/img/clients/* --out-dir=dist/es/assets/img/clients",
+    "imagemin:social-media": "imagemin src/assets/img/social-media/* --out-dir=dist/es/assets/img/social-media",
+    "imagemin:tech": "imagemin src/assets/img/tech/* --out-dir=dist/es/assets/img/tech",
+    "imagemin:misc": "imagemin src/assets/img/* --out-dir=dist/es/assets/img",
     "imagemin": "concurrently \"yarn imagemin:clients\" \"yarn imagemin:social-media\" \"yarn imagemin:tech\" \"yarn imagemin:misc\"",
-    "lint": "eslint ./src",
+    "lint": "concurrently \"yarn lint:js\" \"yarn lint:css\"",
+    "lint:js": "eslint ./src",
+    "lint:css": "echo Add Stylelint",
     "release": "semantic-release",
     "postrelease": "git push origin master --follow-tags",
-    "postcss:build": "postcss src/{**/,}*.css --base src -d es",
-    "postcss:watch": "postcss src/{**/,}*.css --base src -d es --watch",
+    "postcss:build": "postcss src/{**/,}*.css --base src -d dist/es",
+    "postcss:watch": "postcss src/{**/,}*.css --base src -d dist/es --watch",
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
@@ -44,29 +47,16 @@
     "test": "node scripts/test.js --env=jsdom",
     "test:update": "yarn test --updateSnapshot",
     "tsc": "tsc --noEmit",
-    "transpile": "yarn clean:es && concurrently \"yarn babel:build\" \"yarn postcss:build\"",
+    "transpile": "concurrently \"yarn babel:build\" \"yarn postcss:build\"",
     "watch": "concurrently \"yarn babel:watch\" \"yarn postcss:watch\""
-  },
-  "lint-staged": {
-    "*.{js,css}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.js": [
-      "eslint src",
-      "git add"
-    ]
   },
   "moduleRoots": [
     "src",
     "node_modules"
   ],
   "files": [
-    "assets/*",
-    "lib/*",
     "dist/*",
-    "src/*",
-    "es/*"
+    "src/*"
   ],
   "dependencies": {
     "@storybook/addon-storysource": "^5.0.1",
