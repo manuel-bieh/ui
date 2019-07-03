@@ -14,10 +14,12 @@ type PropsT = {
     seamless?: boolean;
     textAlign?: 'left' | 'right' | 'center';
 };
+
 export default function Row({
     align,
     centered,
     children,
+    // direction,
     className,
     el: Element = 'div',
     justifyContent,

@@ -11,14 +11,14 @@
     --spacing-default: 16px;
     --spacing-medium: 24px;
     --spacing-large: 36px;
-    --spacing-xlarge: 48px;
+    --max-width: var(--viewport-max-width, 1280px);
 }
 
 .grid {
     align-items: stretch;
     display: flex;
     flex-wrap: wrap;
-    max-width: var(--viewport-max-width);
+    max-width: var(--max-width);
     position: relative;
     width: 100%;
 
