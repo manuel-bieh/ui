@@ -10,7 +10,7 @@ const Twitter = ({ className, label }: IconProps) => (
     >
         <img
             alt="Logo: Twitter"
-            src={require('../../../assets/img/social-media/twitter.svg')}
+            src={require('../../assets/img/social-media/twitter.svg')}
             className={css.icon}
         />
         {label && <span>{label}</span>}

@@ -14,7 +14,7 @@ const TechLogos = ({ className }: PropsT) => (
                 key={tech}
                 alt={`Logo: ${tech}`}
                 className={`tech-logo--${tech}`}
-                src={require(`../../assets/img/tech/${tech}`)}
+                src={require(`../assets/img/tech/${tech}`)}
             />
         ))}
     </section>

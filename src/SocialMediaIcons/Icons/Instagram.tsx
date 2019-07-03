@@ -10,7 +10,7 @@ const Instagram = ({ className, label }: IconProps) => (
     >
         <img
             alt="Logo: Instagram"
-            src={require('../../../assets/img/social-media/instagram.svg')}
+            src={require('../../assets/img/social-media/instagram.svg')}
             className={css.icon}
         />
         {label && <span>{label}</span>}

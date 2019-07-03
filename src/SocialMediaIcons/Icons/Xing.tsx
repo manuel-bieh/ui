@@ -10,7 +10,7 @@ const Xing = ({ className, label }: IconProps) => (
     >
         <img
             alt="Logo: Xing"
-            src={require('../../../assets/img/social-media/xing.svg')}
+            src={require('../../assets/img/social-media/xing.svg')}
             className={css.icon}
         />
         {label && <span>{label}</span>}
