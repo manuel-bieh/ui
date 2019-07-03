@@ -1,7 +1,3 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
     build:
@@ -21,6 +17,10 @@ jobs:
                       - 'ac:ac:31:d0:a6:dc:8d:0d:7d:51:3d:80:1d:dd:cb:df'
 
             - checkout
+
+            # Using cached node_modules sometimes caused weird behavior with outdated dependencies even
+            # if a newer version was present in package.json so saving an restoring dependencies is
+            # commented out. Should be investigated.
 
             # Download and cache dependencies
             # - restore_cache:
