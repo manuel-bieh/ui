@@ -10,7 +10,7 @@ const Quora = ({ className, label }: IconProps) => (
     >
         <img
             alt="Logo: Quora"
-            src={require('../../../assets/img/social-media/quora.svg')}
+            src={require('../../assets/img/social-media/quora.svg')}
             className={css.icon}
         />
         {label && <span>{label}</span>}

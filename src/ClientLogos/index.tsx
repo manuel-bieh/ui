@@ -8,7 +8,7 @@ const ClientLogos = () => (
             <img
                 alt={`Logo: ${client.name}`}
                 key={client.name}
-                src={require(`../../assets/img/clients/${client.image}`)}
+                src={require(`../assets/img/clients/${client.image}`)}
             />
         ))}
     </section>

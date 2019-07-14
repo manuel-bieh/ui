@@ -10,7 +10,7 @@ const Linkedin = ({ className, label }: IconProps) => (
     >
         <img
             alt="Logo: Linkedin"
-            src={require('../../../assets/img/social-media/linkedin.svg')}
+            src={require('../../assets/img/social-media/linkedin.svg')}
             className={css.icon}
         />
         {label && <span>{label}</span>}

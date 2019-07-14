@@ -12,11 +12,12 @@ module.exports = {
         index: path.join(paths.src, 'index.ts'),
     },
     output: {
-        path: path.join(paths.clientBuild, paths.publicPath),
-        filename: '[name].js',
-        publicPath: paths.publicPath,
         chunkFilename: '[name].chunk.js',
+        filename: '[name].js',
         libraryTarget: 'commonjs2',
+        // path: path.join(paths.clientBuild, paths.publicPath),
+        path: path.join(paths.clientBuild, 'cjs'),
+        publicPath: paths.publicPath,
     },
     module: {
         rules: clientLoaders,

@@ -1,18 +1,18 @@
 const webpack = require('webpack');
-const rimraf = require('rimraf');
+// const rimraf = require('rimraf');
 
 const webpackConfig = require('../config/webpack.config.js')(
     process.env.NODE_ENV || 'production'
 );
-const paths = require('../config/paths');
+// const paths = require('../config/paths');
 const { logMessage, compilerPromise } = require('./utils');
 
 const isWatchMode = process.argv.includes('--watch');
 
 const build = async () => {
-    if (!isWatchMode) {
-        rimraf.sync(paths.clientBuild);
-    }
+    // if (!isWatchMode) {
+    //     rimraf.sync(paths.clientBuild);
+    // }
 
     const [clientConfig] = webpackConfig;
     const multiCompiler = webpack([clientConfig]);

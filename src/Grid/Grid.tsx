@@ -3,7 +3,8 @@ import classNames from 'classnames';
 import { ucfirst } from '../utils';
 import css from './Grid.module.css';
 
-type PropsT = {
+type Props = {
+    [prop: string]: any;
     align?: 'start' | 'end' | 'stretch' | 'center';
     centered?: boolean;
     children: any;
@@ -15,37 +16,35 @@ type PropsT = {
     textAlign?: 'left' | 'right' | 'center';
 };
 
-export default function Row({
+const Grid = ({
     align,
     centered,
     children,
-    // direction,
     className,
-    el: Element = 'div',
+    element: Element = 'div',
     justifyContent,
     fluid,
     seamless,
     textAlign = 'left',
     ...props
-}: PropsT) {
-    return (
-        <Element
-            className={classNames(
-                css.grid,
-                textAlign && css[`textAlign${ucfirst(textAlign)}`],
-                align && css[`align${ucfirst(align)}`],
-                justifyContent &&
-                    css[`justifyContent${ucfirst(justifyContent)}`],
-                className,
-                {
-                    [css.fluid]: fluid,
-                    [css.seamless]: seamless,
-                    [css.centered]: centered,
-                }
-            )}
-            {...props}
-        >
-            {children}
-        </Element>
-    );
-}
+}: Props) => (
+    <Element
+        className={classNames(
+            css.grid,
+            textAlign && css[`textAlign${ucfirst(textAlign)}`],
+            align && css[`align${ucfirst(align)}`],
+            justifyContent && css[`justifyContent${ucfirst(justifyContent)}`],
+            className,
+            {
+                [css.fluid]: fluid,
+                [css.seamless]: seamless,
+                [css.centered]: centered,
+            }
+        )}
+        {...props}
+    >
+        {children}
+    </Element>
+);
+
+export default Grid;
