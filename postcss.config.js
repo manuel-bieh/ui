@@ -11,9 +11,7 @@ module.exports = {
             preserve: true,
         }),
         require('postcss-flexbugs-fixes')(),
-        require('autoprefixer')({
-            browsers: ['last 3 versions', 'ie >= 11', 'Edge <= 15'],
-        }),
+        require('autoprefixer')(),
         require('postcss-custom-properties')(),
         require('postcss-assets')({
             basePath: './assets',

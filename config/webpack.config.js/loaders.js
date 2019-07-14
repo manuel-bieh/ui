@@ -2,6 +2,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const generateSourceMap = process.env.OMIT_SOURCEMAP === 'true' ? false : true;
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 
+// temporary wrapper function around getCSSModuleLocalIdent until this issue is resolved:
+// https://github.com/webpack-contrib/css-loader/pull/965
+const getLocalIdentWorkaround = (
+    context,
+    localIdentName,
+    localName,
+    options
+) => {
+    if (options && options.context === null) {
+        options.context = undefined;
+    }
+    return getCSSModuleLocalIdent(context, localIdentName, localName, options);
+};
+
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 
@@ -39,12 +53,12 @@ const cssModuleLoader = {
         {
             loader: require.resolve('css-loader'),
             options: {
-                camelCase: true,
-                modules: true,
+                localsConvention: 'camelCase',
+                modules: {
+                    getLocalIdent: getLocalIdentWorkaround,
+                },
                 importLoaders: 1,
                 sourceMap: generateSourceMap,
-                // localIdentName: '[name]__[local]--[hash:base64:5]',
-                getLocalIdent: getCSSModuleLocalIdent,
             },
         },
         {
