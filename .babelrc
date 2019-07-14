@@ -6,7 +6,8 @@
             {
                 "modules": false,
                 "targets": {
-                    "browsers": ["last 2 versions", "ie >= 9"]
+                    "browsers": ["last 2 versions", "ie >= 9"],
+                    "node": "current"
                 }
             }
         ],
@@ -19,7 +20,10 @@
     ],
     "env": {
         "test": {
-            "plugins": ["@babel/plugin-transform-modules-commonjs"]
+            "plugins": [
+                "@babel/plugin-transform-modules-commonjs",
+                "@babel/plugin-transform-runtime"
+            ]
         }
     }
 }
