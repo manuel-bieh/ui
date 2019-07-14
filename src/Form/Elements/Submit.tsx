@@ -1,9 +1,9 @@
-// @flow
 import * as React from 'react';
-import { Consumer } from '../context';
+import FormContext from '../context';
 
-export const Submit = (props: any) => (
-    <Consumer>{({ submit }) => <button type="button" {...props} onClick={submit} />}</Consumer>
-);
+export const Submit = (props: any) => {
+    const { submit } = React.useContext(FormContext);
+    return <button type="button" {...props} onClick={submit} />;
+};
 
 export default Submit;

@@ -3,7 +3,7 @@ type Values = {
 };
 
 export const setValue = (name: string, value: any) => ({
-    type: 'SET_VALUES',
+    type: 'SET_VALUE',
     payload: {
         name,
         value,
@@ -20,7 +20,7 @@ export const validationInProgress = (isValidating: boolean) => ({
     payload: isValidating,
 });
 
-export const resetFieldError = (fieldName: string) => ({
+export const resetError = (fieldName: string) => ({
     type: 'RESET_FIELD_ERROR',
     payload: fieldName,
 });
@@ -33,4 +33,9 @@ export const setErrors = (errors: any) => ({
 export const setExternalErrors = (errors: any) => ({
     type: 'SET_EXTERNAL_ERRORS',
     payload: errors,
+});
+
+export const setSubmissionStatus = (isSubmitting: boolean) => ({
+    type: 'SET_SUBMISSION_STATUS',
+    payload: isSubmitting,
 });
