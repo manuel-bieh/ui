@@ -17,5 +17,14 @@ module.exports = {
         'prettier/prettier': 2,
         'react-hooks/exhaustive-deps': 1,
         'no-alert': 1,
+        'security/detect-object-injection': 0,
     },
+    overrides: [
+        {
+            files: '**/*.tsx',
+            rules: {
+                'react/prop-types': 0,
+            },
+        },
+    ],
 };
