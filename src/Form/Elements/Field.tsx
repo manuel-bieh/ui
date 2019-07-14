@@ -3,7 +3,7 @@ import * as React from 'react';
 import FormContext from '../context';
 
 const Field = ({
-    element: Element = 'input',
+    as: Element = 'input',
     onChange: customOnChange,
     name,
     value,
@@ -12,6 +12,7 @@ const Field = ({
 }: any) => {
     const {
         onChange,
+        onFocus,
         isSubmitting,
         isValidating,
         resetError,
@@ -23,16 +24,21 @@ const Field = ({
             disabled={isValidating || isSubmitting}
             name={name}
             value={value || values[name] || ''}
-            onFocus={(e) => {
-                if (typeof props.onFocus === 'function') {
-                    props.onFocus(e);
+            onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
+                if (typeof onFocus === 'function') {
+                    onFocus(e);
                 }
                 if (resetErrorStateOnFocus) {
                     resetError(name);
                 }
             }}
-            onChange={(e) => {
-                if (typeof customOnChange === 'function') {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                if (
+                    typeof customOnChange === 'function' &&
+                    // Don't call customOnChange function if it's the same as the
+                    // Form component's default onChange handler to not call it twice
+                    customOnChange !== onChange
+                ) {
                     customOnChange(e);
                 }
                 onChange(e);
@@ -40,39 +46,5 @@ const Field = ({
         />
     );
 };
-// const Field = ({
-//     element: Element = 'input',
-//     onChange: customOnChange,
-//     name,
-//     value,
-//     resetErrorStateOnFocus,
-//     ...props
-// }: any) => (
-//     <Consumer>
-//         {({ onChange, isSubmitting, isValidating, resetError, values }) => (
-//             <Element
-//                 {...props}
-//                 disabled={isValidating || isSubmitting}
-//                 name={name}
-//                 value={value || values[name] || ''}
-//                 onFocus={(e) => {
-//                     if (typeof props.onFocus === 'function') {
-//                         props.onFocus(e);
-//                     }
-//                     if (resetErrorStateOnFocus) {
-//                         resetError(name);
-//                     }
-//                 }}
-//                 onChange={(e) => {
-//                     if (typeof customOnChange === 'function') {
-//                         customOnChange(e);
-//                     }
-//                     onChange(e);
-//                 }}
-//             />
-//         )}
-//     </Consumer>
-// );
 
-// export default Field;
 export default React.memo(Field);

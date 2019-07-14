@@ -1,6 +1,10 @@
 import { produce } from 'immer';
 
-type State = { [key: string]: any };
+type State = {
+    [key: string]: any;
+    errors?: {};
+    values?: {};
+};
 
 export const initialState: State = Object.freeze({
     errors: undefined,
@@ -17,7 +21,7 @@ export const initialState: State = Object.freeze({
     values: {},
 });
 
-export default (state: any = initialState, action: any) =>
+export default (state: State = initialState, action: any) =>
     produce(state, (draft: State) => {
         switch (action.type) {
             case 'SET_VALUES': {
@@ -26,7 +30,11 @@ export default (state: any = initialState, action: any) =>
             }
 
             case 'SET_VALUE': {
-                draft.values[action.payload.name] = action.payload.value;
+                if (typeof action.payload.value === 'undefined') {
+                    delete draft.values[action.payload.name];
+                } else {
+                    draft.values[action.payload.name] = action.payload.value;
+                }
                 return;
             }
 
@@ -40,7 +48,17 @@ export default (state: any = initialState, action: any) =>
             }
 
             case 'RESET_FIELD_ERROR': {
-                delete draft.errors[action.payload];
+                if (
+                    typeof draft.errors !== 'undefined' &&
+                    draft.errors !== null
+                ) {
+                    delete draft.errors[action.payload];
+                }
+                return;
+            }
+
+            case 'SET_SUBMISSION_STATUS': {
+                draft.isSubmitting = action.payload || false;
                 return;
             }
         }
