@@ -21,6 +21,15 @@ module.exports = {
     },
     overrides: [
         {
+            files: ['*.stories.js', 'stories.js', '**/*.stories.js/*.tsx'],
+            globals: {
+                Hierarchy: true,
+            },
+            rules: {
+                'react/display-name': 0,
+            },
+        },
+        {
             files: '**/*.tsx',
             rules: {
                 'react/prop-types': 0,

@@ -19,12 +19,16 @@ type ErrorsObject = {
 
 type Props = {
     id?: string;
-    initialValues: ValuesObject;
-    onMount: (values: ValuesObject) => any;
-    onUnmount: (values: ValuesObject) => any;
-    onUpdate: (any: any) => any;
+    initialValues?: ValuesObject;
+    onMount?: (values: ValuesObject) => any;
+    onUnmount?: (values: ValuesObject) => any;
+    onUpdate?: (any: any) => any;
     onSubmit: (TEMP: any) => void;
-    validation: ({ values }: { values: ValuesObject }) => Promise<ErrorsObject>;
+    validation?: ({
+        values,
+    }: {
+        values: ValuesObject;
+    }) => Promise<ErrorsObject>;
 };
 
 const Form: React.FC<Props> = ({
@@ -89,15 +93,16 @@ const Form: React.FC<Props> = ({
     );
 
     const validate = useCallback(async () => {
-        const { values } = state;
-
         if (typeof validation !== 'function') {
             return true;
         }
 
         validationInProgress(true);
         try {
-            const errors = await validation({ values });
+            console.log('VAL');
+            const errors = await validation({ values: state.values });
+            console.log('VAL2');
+            console.log({ errors });
             if (!errors || Object.keys(errors).length === 0) {
                 return true;
             }
@@ -110,13 +115,18 @@ const Form: React.FC<Props> = ({
         } finally {
             validationInProgress(false);
         }
-    }, [setErrors, setExternalErrors, state, validation, validationInProgress]);
+    }, [
+        setErrors,
+        setExternalErrors,
+        state.values,
+        validation,
+        validationInProgress,
+    ]);
 
     const submit = useCallback(async () => {
         if (typeof onSubmit !== 'function' || state.isSubmitting === true) {
             return;
         }
-
         const isValid = await validate();
 
         if (!isValid) {
@@ -161,6 +171,7 @@ const Form: React.FC<Props> = ({
     const submitHandler = useCallback(
         (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
+            console.log('SUBMITTED');
             submit();
         },
         [submit]
@@ -183,27 +194,51 @@ const Form: React.FC<Props> = ({
             // TODO: make this more flexible (see the work that has been done in array-parser.js for more)
             if (e.target instanceof HTMLInputElement && type === 'checkbox') {
                 const { checked } = e.target;
+                const values = state.values;
 
-                if (!value || value === 'on') {
-                    return setValue(name, checked ? 'on' : undefined);
+                if (!values[name] && checked) {
+                    // field name does not yet exist. We're setting it here
+                    return setValue(name, value || 'on');
                 }
 
-                const removeUncheckedValue = (values: any) =>
-                    (Array.isArray(values[name]) ? values[name] : []).filter(
-                        (item: any) => item !== value
-                    );
+                if (
+                    values[name] &&
+                    (typeof values[name] === 'string' ||
+                        typeof values[name] === 'boolean')
+                ) {
+                    if (checked) {
+                        // field name exists already. convert to array and add old and new value to it
+                        return setValue(
+                            name,
+                            [values[name]].concat(value || 'on')
+                        );
+                    }
+                    return setValue(name, undefined);
+                }
 
-                const addCheckedValue = (values: any) =>
-                    (Array.isArray(values[name]) ? values[name] : []).concat(
-                        value
-                    );
+                if (Array.isArray(values[name])) {
+                    if (checked) {
+                        const addCheckedValue = (values: any) =>
+                            (Array.isArray(values[name])
+                                ? values[name]
+                                : []
+                            ).concat(value || 'on');
 
-                return setValue(
-                    name,
-                    checked
-                        ? addCheckedValue(state.values)
-                        : removeUncheckedValue(state.values)
-                );
+                        return setValue(name, addCheckedValue(values));
+                    }
+                    const removeUncheckedValue = (values: any) =>
+                        (Array.isArray(values[name])
+                            ? values[name]
+                            : []
+                        ).filter((item: any) => item !== value);
+
+                    const nextValues = removeUncheckedValue(values);
+
+                    return setValue(
+                        name,
+                        nextValues.length === 1 ? nextValues[0] : nextValues
+                    );
+                }
             }
 
             return setValue(name, value);
@@ -290,7 +325,7 @@ const Form: React.FC<Props> = ({
             isInvalid,
             errors: state.errors,
             externalErrors: state.externalErrors,
-            form: form.current,
+            // form: form.current,
             initialValues,
             isSubmitting: state.isSubmitting,
             isValidating: state.isValidating,
