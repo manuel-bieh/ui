@@ -5,12 +5,14 @@ import readme from '../../README.md';
 import 'github-markdown-css';
 import './intro.css';
 
-storiesOf('Docs|Introduction', module).add(
-    'Getting started',
-    () => (
-        <div className="markdown-body">
-            <div dangerouslySetInnerHTML={{ __html: marked(readme) }} />
-        </div>
-    ),
-    { options: { showPanel: false } }
-);
+storiesOf('Docs|Introduction', module)
+    .add(
+        'Getting started',
+        () => (
+            <div className="markdown-body">
+                <div dangerouslySetInnerHTML={{ __html: marked(readme) }} />
+            </div>
+        ),
+        { options: { showPanel: false } }
+    )
+    .add('Version', () => <div>{require('../../package.json').version}</div>);

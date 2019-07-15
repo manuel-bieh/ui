@@ -6,35 +6,23 @@ import React, {
     useRef,
 } from 'react';
 import { Provider } from './context';
+// import formReducer, { initialState } from './reducer';
 import formReducer from './reducer';
 import * as actions from './actions';
+import { ErrorsObject, FormState, FormProps, ValuesObject } from './types';
 
-type ValuesObject = {
-    [key: string]: any;
-};
+export const initialState: FormState = Object.freeze({
+    errors: undefined,
+    externalErrors: undefined,
+    isSubmitting: false,
+    isValidating: false,
+    values: {},
+});
 
-type ErrorsObject = {
-    [key: string]: undefined | string | boolean;
-};
-
-type Props = {
-    id?: string;
-    initialValues?: ValuesObject;
-    onMount?: (values: ValuesObject) => any;
-    onUnmount?: (values: ValuesObject) => any;
-    onUpdate?: (any: any) => any;
-    onSubmit: (TEMP: any) => void;
-    validation?: ({
-        values,
-    }: {
-        values: ValuesObject;
-    }) => Promise<ErrorsObject>;
-};
-
-const Form: React.FC<Props> = ({
+const Form: React.FC<FormProps> = ({
     children,
     id,
-    initialValues,
+    initialValues = {},
     onMount,
     onUnmount,
     onUpdate,
@@ -44,11 +32,10 @@ const Form: React.FC<Props> = ({
     const form = useRef<any>(null);
     const isMounted = useRef(null);
 
-    const initialState = {
-        values: initialValues || {},
-    };
-
-    const [state, dispatch] = useReducer(formReducer, initialState);
+    const [state, dispatch] = useReducer(formReducer, {
+        ...initialState,
+        values: initialValues,
+    });
 
     const setValue = useCallback((property: string, value: any) => {
         dispatch(actions.setValue(property, value));
@@ -99,10 +86,7 @@ const Form: React.FC<Props> = ({
 
         validationInProgress(true);
         try {
-            console.log('VAL');
             const errors = await validation({ values: state.values });
-            console.log('VAL2');
-            console.log({ errors });
             if (!errors || Object.keys(errors).length === 0) {
                 return true;
             }
@@ -196,26 +180,26 @@ const Form: React.FC<Props> = ({
                 const { checked } = e.target;
                 const values = state.values;
 
+                // Changed field name does not yet exist. We're setting it as string here
                 if (!values[name] && checked) {
-                    // field name does not yet exist. We're setting it here
                     return setValue(name, value || 'on');
                 }
 
+                // Changed field name exists and is the only value, thus string or boolean
                 if (
                     values[name] &&
                     (typeof values[name] === 'string' ||
                         typeof values[name] === 'boolean')
                 ) {
-                    if (checked) {
-                        // field name exists already. convert to array and add old and new value to it
-                        return setValue(
-                            name,
-                            [values[name]].concat(value || 'on')
-                        );
-                    }
-                    return setValue(name, undefined);
+                    return setValue(
+                        name,
+                        checked
+                            ? [values[name]].concat(value || 'on')
+                            : undefined
+                    );
                 }
 
+                // Changed field name already exists in values
                 if (Array.isArray(values[name])) {
                     if (checked) {
                         const addCheckedValue = (values: any) =>
@@ -226,6 +210,7 @@ const Form: React.FC<Props> = ({
 
                         return setValue(name, addCheckedValue(values));
                     }
+
                     const removeUncheckedValue = (values: any) =>
                         (Array.isArray(values[name])
                             ? values[name]
