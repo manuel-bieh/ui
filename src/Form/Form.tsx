@@ -6,14 +6,11 @@ import React, {
     useRef,
 } from 'react';
 import { Provider } from './context';
-// import formReducer, { initialState } from './reducer';
 import formReducer from './reducer';
 import * as actions from './actions';
-import { ErrorsObject, FormState, FormProps, ValuesObject } from './types';
+import { ErrorsObject, FormState, FormProps } from './types';
 
 export const initialState: FormState = Object.freeze({
-    errors: undefined,
-    externalErrors: undefined,
     isSubmitting: false,
     isValidating: false,
     values: {},
@@ -45,7 +42,7 @@ const Form: React.FC<FormProps> = ({
         dispatch(actions.setValues(values));
     }, []);
 
-    const setErrors = useCallback((errors: ErrorsObject) => {
+    const setErrors = useCallback((errors: ErrorsObject | boolean) => {
         dispatch(actions.setErrors(errors));
     }, []);
 
@@ -87,7 +84,13 @@ const Form: React.FC<FormProps> = ({
         validationInProgress(true);
         try {
             const errors = await validation({ values: state.values });
-            if (!errors || Object.keys(errors).length === 0) {
+
+            if (
+                typeof errors === 'undefined' ||
+                errors === null ||
+                errors === false ||
+                (typeof errors === 'object' && Object.keys(errors).length === 0)
+            ) {
                 return true;
             }
 
@@ -108,12 +111,15 @@ const Form: React.FC<FormProps> = ({
     ]);
 
     const submit = useCallback(async () => {
-        if (typeof onSubmit !== 'function' || state.isSubmitting === true) {
+        // User is already sending or validating form data, return immediately
+        if (state.isSubmitting === true || state.isValidating === true) {
             return;
         }
+
         const isValid = await validate();
 
-        if (!isValid) {
+        // if validation failed or no onSubmit handler was given, go no further
+        if (!isValid || typeof onSubmit !== 'function') {
             return;
         }
 
@@ -148,6 +154,7 @@ const Form: React.FC<FormProps> = ({
         state.errors,
         state.externalErrors,
         state.isSubmitting,
+        state.isValidating,
         state.values,
         validate,
     ]);
@@ -155,7 +162,6 @@ const Form: React.FC<FormProps> = ({
     const submitHandler = useCallback(
         (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            console.log('SUBMITTED');
             submit();
         },
         [submit]

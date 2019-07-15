@@ -1,10 +1,60 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, act, fireEvent } from '@testing-library/react';
 import Form from './Form';
+import Field from './Elements/Field';
+import Checkbox from './Elements/Checkbox';
+import Textarea from './Elements/Textarea';
+// import Submit from './Elements/Submit';
 
 describe('Form', () => {
     it('renders a form', () => {
         const form = render(<Form>Hallo</Form>);
         expect(form.container.firstChild).toMatchSnapshot();
+    });
+
+    it('renders a form with initial values', () => {
+        const initialValues = {
+            textField: 'textFieldHasText',
+            checkbox: 'checkboxIsChecked',
+            textarea: 'textareaHasText',
+        };
+
+        const form = render(
+            <Form initialValues={initialValues}>
+                <Field name="textField" id="textField" />
+                <Field name="otherTextField" id="otherTextField" />
+                <Checkbox name="checkbox" value="checkboxIsChecked" />
+                <Textarea name="textarea" id="textarea" />
+            </Form>
+        );
+
+        expect(form.container.querySelector('#textField').value).toEqual(
+            'textFieldHasText'
+        );
+        expect(form.container.querySelector('#otherTextField').value).toEqual(
+            ''
+        );
+        expect(
+            form.container.querySelector(
+                '[name="checkbox"][value="checkboxIsChecked"]'
+            ).checked
+        ).toBe(true);
+        expect(form.container.querySelector('#textarea').value).toEqual(
+            'textareaHasText'
+        );
+    });
+
+    it('validates a form', async () => {
+        const hasErrors = jest.fn(() => false);
+        const submit = jest.fn();
+        act(() => {
+            const form = render(
+                <Form validation={hasErrors} onSubmit={submit} id="form" />
+            );
+
+            fireEvent.submit(form.container.querySelector('#form'));
+        });
+        expect(await hasErrors).toHaveBeenCalled();
+        expect(await submit).toHaveBeenCalled();
     });
 });

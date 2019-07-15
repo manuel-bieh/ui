@@ -21,7 +21,11 @@ module.exports = {
     },
     overrides: [
         {
-            files: ['*.stories.js', 'stories.js', '**/*.stories.js/*.tsx'],
+            files: [
+                '*.stories.js',
+                'stories.js',
+                '**/*.stories.js/*.{js,jsx,ts,tsx}',
+            ],
             globals: {
                 Hierarchy: true,
             },

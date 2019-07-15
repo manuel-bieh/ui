@@ -3,7 +3,7 @@ import { FormState } from './types';
 
 export default (state: FormState = {}, action: any) =>
     produce(state, (draft: FormState) => {
-        console.log({ action });
+        // console.log({ action });
         switch (action.type) {
             case 'SET_VALUES': {
                 draft.values = action.payload;
