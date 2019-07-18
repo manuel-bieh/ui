@@ -8,7 +8,7 @@ import Textarea from './Elements/Textarea';
 
 describe('Form', () => {
     it('renders a form', () => {
-        const form = render(<Form>Hallo</Form>);
+        const form = render(<Form onSubmit={jest.fn()}>Hallo</Form>);
         expect(form.container.firstChild).toMatchSnapshot();
     });
 
@@ -20,7 +20,7 @@ describe('Form', () => {
         };
 
         const form = render(
-            <Form initialValues={initialValues}>
+            <Form initialValues={initialValues} onSubmit={() => {}}>
                 <Field name="textField" id="textField" />
                 <Field name="otherTextField" id="otherTextField" />
                 <Checkbox name="checkbox" value="checkboxIsChecked" />
@@ -28,20 +28,21 @@ describe('Form', () => {
             </Form>
         );
 
-        expect(form.container.querySelector('#textField').value).toEqual(
-            'textFieldHasText'
-        );
-        expect(form.container.querySelector('#otherTextField').value).toEqual(
-            ''
-        );
         expect(
-            form.container.querySelector(
+            form.container.querySelector<HTMLInputElement>('#textField').value
+        ).toEqual('textFieldHasText');
+        expect(
+            form.container.querySelector<HTMLInputElement>('#otherTextField')
+                .value
+        ).toEqual('');
+        expect(
+            form.container.querySelector<HTMLInputElement>(
                 '[name="checkbox"][value="checkboxIsChecked"]'
             ).checked
         ).toBe(true);
-        expect(form.container.querySelector('#textarea').value).toEqual(
-            'textareaHasText'
-        );
+        expect(
+            form.container.querySelector<HTMLTextAreaElement>('#textarea').value
+        ).toEqual('textareaHasText');
     });
 
     it('validates a form', async () => {
@@ -57,4 +58,7 @@ describe('Form', () => {
         expect(await hasErrors).toHaveBeenCalled();
         expect(await submit).toHaveBeenCalled();
     });
+
+    // TODO: mostly a test comment to test leasot integration with lint-staged
+    // but while we're at it: you should really add more tests
 });
