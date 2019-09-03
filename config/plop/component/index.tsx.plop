@@ -1,0 +1,13 @@
+import * as React from 'react';
+import classNames from 'classnames';
+import css from './Component.module.css';
+
+type Props = {
+    className?: string;
+};
+
+const Header: React.FC<Props> = ({ children, className }) => (
+    <header className={classNames(css.wrapper, className)}>{children}</header>
+);
+
+export default Header;

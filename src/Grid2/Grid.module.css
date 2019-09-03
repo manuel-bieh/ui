@@ -22,6 +22,10 @@
     position: relative;
     width: 100%;
 
+    &.test {
+        color: var(--test);
+    }
+
     &.centered {
         margin: auto;
     }
@@ -87,6 +91,10 @@
         }
 
         .grid {
+            height: calc(
+                100% + var(--grid-cell-padding-v) * 2 +
+                    var(--grid-cell-margin-v)
+            );
             margin: calc(
                     0px - var(--grid-cell-padding-v) -
                         (var(--grid-cell-margin-v) / 2)
@@ -116,7 +124,7 @@
 
         @each $cols in 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 {
             .col-$(size)$(cols) {
-                /* stylelint-disable-next-line function-calc-no-invalid */
+                /* stylelint-disable-next-line */
                 width: calc(100% / (12 / $(cols)) - var(--grid-cell-margin-h));
             }
         }

@@ -28,6 +28,7 @@ module.exports = {
             ],
             globals: {
                 Hierarchy: true,
+                Group: true,
             },
             rules: {
                 'react/display-name': 0,
@@ -37,6 +38,7 @@ module.exports = {
             files: '**/*.tsx',
             rules: {
                 'react/prop-types': 0,
+                '@typescript-eslint/no-angle-bracket-type-assertion': 0,
             },
         },
     ],

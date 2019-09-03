@@ -1,9 +1,9 @@
 {
-  "*.{js,jsx,ts,tsx,css}": [
+  "{src,config,scripts}/**/*.{js,jsx,ts,tsx,css}": [
     "prettier --write",
     "git add"
   ],
-  "*.{js,jsx,ts,tsx}": [
+  "{src,config,scripts}/**/*.{js,jsx,ts,tsx}": [
     "eslint --fix --ext js,jsx,ts,tsx",
     "leasot -x",
     "git add"

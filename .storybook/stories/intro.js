@@ -9,7 +9,7 @@ storiesOf('Docs|Introduction', module)
     .add(
         'Getting started',
         () => (
-            <div className="markdown-body">
+            <div className="markdown-body" style={{ padding: 15 }}>
                 <div dangerouslySetInnerHTML={{ __html: marked(readme) }} />
             </div>
         ),
