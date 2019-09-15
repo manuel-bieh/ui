@@ -1,9 +1,14 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import Hierarchy from '../../.storybook/hierarchyGroups';
 
 import Header from '.';
 
-storiesOf(`${Hierarchy.LAYOUT}|Footer`, module).add('With some content', () => (
-    <Header>Content</Header>
-));
+console.log(Group.Components('Footer'));
+
+// export default { title: Group.Components('Footer') };
+export default { title: 'Layout|Footer' };
+
+export const withSomeContent = () => <Header>Content</Header>;
+
+withSomeContent.story = {
+    name: 'With some content',
+};

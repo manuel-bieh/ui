@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-    configure,
-    setAddon,
-    addDecorator,
-    addParameters,
-} from '@storybook/react';
+import { configure, addDecorator, addParameters } from '@storybook/react';
 import './stories/intro';
 import '../src/index.module.css';
 import hierarchyGroups from './hierarchyGroups';
@@ -29,17 +24,16 @@ global.Group = new Proxy(
 
 addParameters({
     options: {
-        name: pkg.name,
-        url: pkg.homepage,
+        theme: {
+            brandTitle: pkg.name,
+            brandUrl: pkg.homepage,
+        },
         hierarchySeparator,
         hierarchyRootSeparator,
     },
 });
 
-const req = require.context('../src', true, /.stories.(js|jsx|ts|tsx)$/);
-
-function loadStories() {
-    req.keys().forEach((filename) => req(filename));
-}
-
-configure(loadStories, module);
+configure(
+    require.context('../src/', true, /\.stories\.(js|jsx|ts|tsx)$/),
+    module
+);
