@@ -2,9 +2,13 @@ import React from 'react';
 
 import Header from '.';
 
-console.log(Group.Components('Footer'));
+// Fails:
+// export default { title: Group.Layout('Footer') };
 
-// export default { title: Group.Components('Footer') };
+// logs: string Layout|Footer:
+console.log(typeof Group.Layout('Footer'), Group.Layout('Footer'));
+
+// Works:
 export default { title: 'Layout|Footer' };
 
 export const withSomeContent = () => <Header>Content</Header>;
