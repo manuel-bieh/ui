@@ -21,6 +21,14 @@ export default [
         url: 'https://www.lab1886.com/',
     },
     {
+        name: 'Osram',
+        image: 'osram.svg',
+    },
+    {
+        name: 'Rocket Internet',
+        image: 'rocket-internet.svg',
+    },
+    {
         name: 'Handelsblatt',
         image: 'handelsblatt.svg',
         url: 'http://www.handelsblatt.com/',
