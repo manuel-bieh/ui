@@ -24,6 +24,7 @@ export default () => (
         onSubmit={async ({ resetValues }) => {
             await delay(1000);
             resetValues();
+            // eslint-disable-next-line no-alert
             alert('Alright, all done!');
         }}
     >

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars,no-var,no-useless-escape,no-redeclare */
 const value = 'placeholder';
 const name = 'users:test[admins][superadmins][]';
 // var name = 'users-test[admins][superadmins][]';
@@ -15,15 +16,9 @@ const reduced = [fieldName, ...arrayParams].reduce(
     (acc, fieldName, index, array) => {
         const [obj, last] = acc;
         const next = last ? last : obj;
-        const [, cleanName] = fieldName.match(/^\[(.*)\]$/) || [
-            null,
-            fieldName,
-        ];
+        const [, cleanName] = fieldName.match(/^\[(.*)\]$/) || [null, fieldName];
         if (fieldName !== '[]') {
-            next[cleanName] =
-                array[index + 1] === '[]' && array.length - 1 === index + 1
-                    ? []
-                    : {};
+            next[cleanName] = array[index + 1] === '[]' && array.length - 1 === index + 1 ? [] : {};
         }
 
         const isLastItem = array.length - 1 === index;

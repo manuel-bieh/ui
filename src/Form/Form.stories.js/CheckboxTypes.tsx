@@ -24,14 +24,12 @@ export default () => (
     >
         <p>
             <label>
-                <Checkbox name="first-unique-name" value="1" />{' '}
-                first-unique-name=1
+                <Checkbox name="first-unique-name" value="1" /> first-unique-name=1
             </label>
         </p>
         <p>
             <label>
-                <Checkbox name="second-unique-name" value="1" />{' '}
-                second-unique-name=1
+                <Checkbox name="second-unique-name" value="1" /> second-unique-name=1
             </label>
         </p>
         <p>

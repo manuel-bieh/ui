@@ -4,10 +4,7 @@ const { cssModuleLoader, cssLoader } = require('./loaders');
 
 module.exports = async ({ config }) => {
     config.plugins = [...config.plugins, ...plugins];
-    config.resolve.extensions = config.resolve.extensions.concat([
-        '.ts',
-        '.tsx',
-    ]);
+    config.resolve.extensions = config.resolve.extensions.concat(['.ts', '.tsx']);
 
     config.module.rules.push({
         test: /\.(ts|tsx)$/,

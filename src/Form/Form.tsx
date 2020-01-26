@@ -1,10 +1,4 @@
-import React, {
-    useCallback,
-    useEffect,
-    useMemo,
-    useReducer,
-    useRef,
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
 import { Provider } from './context';
 import formReducer from './reducer';
 import * as actions from './actions';
@@ -71,8 +65,7 @@ const Form: React.FC<FormProps> = ({
     );
 
     const isInvalid = useCallback(
-        (fieldName: string) =>
-            (state.errors && state.errors[fieldName]) || false,
+        (fieldName: string) => (state.errors && state.errors[fieldName]) || false,
         [state.errors]
     );
 
@@ -102,13 +95,7 @@ const Form: React.FC<FormProps> = ({
         } finally {
             validationInProgress(false);
         }
-    }, [
-        setErrors,
-        setExternalErrors,
-        state.values,
-        validation,
-        validationInProgress,
-    ]);
+    }, [setErrors, setExternalErrors, state.values, validation, validationInProgress]);
 
     const submit = useCallback(async () => {
         // User is already sending or validating form data, return immediately
@@ -194,14 +181,11 @@ const Form: React.FC<FormProps> = ({
                 // Changed field name exists and is the only value, thus string or boolean
                 if (
                     values[name] &&
-                    (typeof values[name] === 'string' ||
-                        typeof values[name] === 'boolean')
+                    (typeof values[name] === 'string' || typeof values[name] === 'boolean')
                 ) {
                     return setValue(
                         name,
-                        checked
-                            ? [values[name]].concat(value || 'on')
-                            : undefined
+                        checked ? [values[name]].concat(value || 'on') : undefined
                     );
                 }
 
@@ -209,26 +193,19 @@ const Form: React.FC<FormProps> = ({
                 if (Array.isArray(values[name])) {
                     if (checked) {
                         const addCheckedValue = (values: any) =>
-                            (Array.isArray(values[name])
-                                ? values[name]
-                                : []
-                            ).concat(value || 'on');
+                            (Array.isArray(values[name]) ? values[name] : []).concat(value || 'on');
 
                         return setValue(name, addCheckedValue(values));
                     }
 
                     const removeUncheckedValue = (values: any) =>
-                        (Array.isArray(values[name])
-                            ? values[name]
-                            : []
-                        ).filter((item: any) => item !== value);
+                        (Array.isArray(values[name]) ? values[name] : []).filter(
+                            (item: any) => item !== value
+                        );
 
                     const nextValues = removeUncheckedValue(values);
 
-                    return setValue(
-                        name,
-                        nextValues.length === 1 ? nextValues[0] : nextValues
-                    );
+                    return setValue(name, nextValues.length === 1 ? nextValues[0] : nextValues);
                 }
             }
 
@@ -259,10 +236,7 @@ const Form: React.FC<FormProps> = ({
         }
 
         return () => {
-            if (
-                typeof onUnmount === 'function' &&
-                isMounted.current === false
-            ) {
+            if (typeof onUnmount === 'function' && isMounted.current === false) {
                 onUnmount(params);
             }
         };

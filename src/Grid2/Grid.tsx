@@ -33,8 +33,7 @@ export default function Row({
                 css.grid,
                 textAlign && css[`textAlign${ucfirst(textAlign)}`],
                 align && css[`align${ucfirst(align)}`],
-                justifyContent &&
-                    css[`justifyContent${ucfirst(justifyContent)}`],
+                justifyContent && css[`justifyContent${ucfirst(justifyContent)}`],
                 className,
                 {
                     [css.fluid]: fluid,

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-mount-set-state */
 import * as React from 'react';
 import { Provider } from './context';
 import formReducer from './reducer';
@@ -77,8 +78,7 @@ class FormClass extends React.PureComponent<PropsT, StateT> {
 
     form: { current: null | HTMLFormElement } = React.createRef();
 
-    isInvalid = (fieldName: string) =>
-        (this.state.errors && this.state.errors[fieldName]) || false;
+    isInvalid = (fieldName: string) => (this.state.errors && this.state.errors[fieldName]) || false;
 
     resetError = (fieldName: string) => {
         this.setState((state) => {
@@ -151,18 +151,13 @@ class FormClass extends React.PureComponent<PropsT, StateT> {
                 values: {
                     ...state.values,
                     [name]: (checked
-                        ? (Array.isArray(state.values[name])
-                              ? state.values[name]
-                              : []
-                          ).concat(value)
-                        : (Array.isArray(state.values[name])
-                              ? state.values[name]
-                              : []
-                          ).filter((item) => item !== value)
-                    ).reduce(
-                        (acc, item) => (item ? (acc || []).concat(item) : acc),
-                        undefined
-                    ),
+                        ? (Array.isArray(state.values[name]) ? state.values[name] : []).concat(
+                              value
+                          )
+                        : (Array.isArray(state.values[name]) ? state.values[name] : []).filter(
+                              (item) => item !== value
+                          )
+                    ).reduce((acc, item) => (item ? (acc || []).concat(item) : acc), undefined),
                 },
             }));
         }
@@ -250,13 +245,7 @@ class FormClass extends React.PureComponent<PropsT, StateT> {
 
     render() {
         const { children, id } = this.props;
-        const {
-            errors,
-            isSubmitting,
-            isValidating,
-            externalErrors,
-            values,
-        } = this.state;
+        const { errors, isSubmitting, isValidating, externalErrors, values } = this.state;
 
         const context: FormContextT = {
             form: this.form.current,
@@ -276,14 +265,8 @@ class FormClass extends React.PureComponent<PropsT, StateT> {
 
         return (
             <Provider value={context}>
-                <form
-                    id={this.props.id}
-                    ref={this.form}
-                    onSubmit={this.onSubmit}
-                >
-                    {typeof children === 'function'
-                        ? children(context)
-                        : children}
+                <form id={this.props.id} ref={this.form} onSubmit={this.onSubmit}>
+                    {typeof children === 'function' ? children(context) : children}
                 </form>
             </Provider>
         );

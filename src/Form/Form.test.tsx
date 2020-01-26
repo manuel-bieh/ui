@@ -28,30 +28,25 @@ describe('Form', () => {
             </Form>
         );
 
-        expect(
-            form.container.querySelector<HTMLInputElement>('#textField').value
-        ).toEqual('textFieldHasText');
-        expect(
-            form.container.querySelector<HTMLInputElement>('#otherTextField')
-                .value
-        ).toEqual('');
+        expect(form.container.querySelector<HTMLInputElement>('#textField').value).toEqual(
+            'textFieldHasText'
+        );
+        expect(form.container.querySelector<HTMLInputElement>('#otherTextField').value).toEqual('');
         expect(
             form.container.querySelector<HTMLInputElement>(
                 '[name="checkbox"][value="checkboxIsChecked"]'
             ).checked
         ).toBe(true);
-        expect(
-            form.container.querySelector<HTMLTextAreaElement>('#textarea').value
-        ).toEqual('textareaHasText');
+        expect(form.container.querySelector<HTMLTextAreaElement>('#textarea').value).toEqual(
+            'textareaHasText'
+        );
     });
 
     it('validates a form', async () => {
         const hasErrors = jest.fn(() => false);
         const submit = jest.fn();
         act(() => {
-            const form = render(
-                <Form validation={hasErrors} onSubmit={submit} id="form" />
-            );
+            const form = render(<Form validation={hasErrors} onSubmit={submit} id="form" />);
 
             fireEvent.submit(form.container.querySelector('#form'));
         });

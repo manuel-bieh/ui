@@ -4,12 +4,7 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 
 // temporary wrapper function around getCSSModuleLocalIdent until this issue is resolved:
 // https://github.com/webpack-contrib/css-loader/pull/965
-const getLocalIdentWorkaround = (
-    context,
-    localIdentName,
-    localName,
-    options
-) => {
+const getLocalIdentWorkaround = (context, localIdentName, localName, options) => {
     if (options && options.context === null) {
         options.context = undefined;
     }
@@ -30,8 +25,7 @@ const babelLoader = {
                 {
                     loaderMap: {
                         svg: {
-                            ReactComponent:
-                                '@svgr/webpack?-prettier,-svgo![path]',
+                            ReactComponent: '@svgr/webpack?-prettier,-svgo![path]',
                         },
                     },
                 },

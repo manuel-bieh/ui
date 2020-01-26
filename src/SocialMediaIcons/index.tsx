@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-    Github,
-    Twitter,
-    Xing,
-    Linkedin,
-    Instagram,
-    Quora,
-    AngelList,
-} from './Icons';
+import { Github, Twitter, Xing, Linkedin, Instagram, Quora, AngelList } from './Icons';
 
 type Props = {
     className?: string;

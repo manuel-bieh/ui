@@ -32,9 +32,7 @@ const Grid = ({
         className={classNames(css.grid, className, {
             [css[`textAlign${ucfirst(textAlign)}`]]: Boolean(textAlign),
             [css[`align${ucfirst(align || '')}`]]: Boolean(align),
-            [css[`justifyContent${ucfirst(justifyContent || '')}`]]: Boolean(
-                justifyContent
-            ),
+            [css[`justifyContent${ucfirst(justifyContent || '')}`]]: Boolean(justifyContent),
             [css.fluid]: fluid,
             [css.seamless]: seamless,
             [css.centered]: centered,

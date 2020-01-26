@@ -1,15 +1,12 @@
 {
   "{src,config,scripts}/**/*.{js,jsx,ts,tsx,css}": [
-    "prettier --write",
-    "git add"
+    "prettier --write"
   ],
   "{src,config,scripts}/**/*.{js,jsx,ts,tsx}": [
     "eslint --fix --ext js,jsx,ts,tsx",
-    "leasot -x",
-    "git add"
+    "leasot -x"
   ],
   "*.css": [
-    "stylelint --fix",
-    "git add"
+    "stylelint --fix"
   ]
 }

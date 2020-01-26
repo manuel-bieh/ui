@@ -32,10 +32,7 @@ export default (state: FormState = {}, action: any) =>
             }
 
             case 'RESET_FIELD_ERROR': {
-                if (
-                    typeof draft.errors !== 'undefined' &&
-                    draft.errors !== null
-                ) {
+                if (typeof draft.errors !== 'undefined' && draft.errors !== null) {
                     delete draft.errors[action.payload];
                     // No more errors left? Delete errors property completely
                     if (Object.keys(draft.errors).length === 0) {

@@ -2,11 +2,7 @@ import React from 'react';
 import Form from './../Form';
 import Checkbox from './../Elements/Checkbox';
 import Input from './../Elements/Input';
-import {
-    ShowValues,
-    restoreValuesFromLocalStorage,
-    storeValuesInLocalStorage,
-} from './helpers';
+import { ShowValues, restoreValuesFromLocalStorage, storeValuesInLocalStorage } from './helpers';
 
 export default () => (
     <Form
@@ -17,8 +13,8 @@ export default () => (
         onMount={restoreValuesFromLocalStorage}
         onUnmount={storeValuesInLocalStorage}
         initialValues={{
-            text: 'hello!',
-            notif: ['messages'],
+            'text': 'hello!',
+            'notif': ['messages'],
             'notifications[alerts]': 'on',
         }}
     >
@@ -29,14 +25,12 @@ export default () => (
         </p>
         <p>
             <label>
-                <Checkbox name="notifications[messages]" />{' '}
-                notifications[messages]
+                <Checkbox name="notifications[messages]" /> notifications[messages]
             </label>
         </p>
         <p>
             <label>
-                <Checkbox name="notifications[other]" value="1" />{' '}
-                notifications[other] = 1
+                <Checkbox name="notifications[other]" value="1" /> notifications[other] = 1
             </label>
         </p>
         <Input name="text" />

@@ -5,11 +5,7 @@ export const storeValuesInLocalStorage = ({ id, values }) => {
     localStorage.setItem(id, JSON.stringify(values));
 };
 
-export const restoreValuesFromLocalStorage = ({
-    id,
-    initialValues,
-    setValues,
-}) => {
+export const restoreValuesFromLocalStorage = ({ id, initialValues, setValues }) => {
     const values = JSON.parse(localStorage.getItem(id)) || initialValues;
     setValues(values);
 };

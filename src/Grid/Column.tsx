@@ -49,8 +49,7 @@ const Column = ({
                 sizeClass,
                 textAlign && css[`textAlign${ucfirst(textAlign)}`],
                 alignItems && css[`alignItems${ucfirst(alignItems)}`],
-                justifyContent &&
-                    css[`justifyContent${ucfirst(justifyContent)}`],
+                justifyContent && css[`justifyContent${ucfirst(justifyContent)}`],
                 className
             )}
         >

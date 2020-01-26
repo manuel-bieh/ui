@@ -43,14 +43,12 @@ export default () => (
         </p>
         <p>
             <label>
-                <Checkbox name="notifications[messages]" />{' '}
-                notifications[messages]
+                <Checkbox name="notifications[messages]" /> notifications[messages]
             </label>
         </p>
         <p>
             <label>
-                <Checkbox name="notifications[other]" value="1" />{' '}
-                notifications[other] = 1
+                <Checkbox name="notifications[other]" value="1" /> notifications[other] = 1
             </label>
         </p>
         <Input name="text" />

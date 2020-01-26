@@ -4,10 +4,7 @@ import css from './Icons.module.css';
 import { IconProps } from './types';
 
 const AngelList = ({ className, label }: IconProps) => (
-    <a
-        href="https://angel.co/manuelbieh"
-        className={classNames(className, css.wrapper)}
-    >
+    <a href="https://angel.co/manuelbieh" className={classNames(className, css.wrapper)}>
         <img
             alt="Logo: AngelList"
             src={require('../../assets/img/social-media/angellist.svg')}

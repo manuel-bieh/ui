@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-    AngelList,
-    GitHub,
-    Instagram,
-    Linkedin,
-    Quora,
-    Twitter,
-    Xing,
-} from './Icons';
+import { AngelList, GitHub, Instagram, Linkedin, Quora, Twitter, Xing } from './Icons';
 import SocialMediaIcons from '.';
 
 export default { title: 'Components|Social Media Icons' };

@@ -68,8 +68,7 @@
         box-sizing: border-box;
         flex: 0 1 auto;
         float: left;
-        margin: calc(var(--grid-cell-margin-v) / 2)
-            calc(var(--grid-cell-margin-h) / 2);
+        margin: calc(var(--grid-cell-margin-v) / 2) calc(var(--grid-cell-margin-h) / 2);
         max-width: 100%;
         min-height: 1px;
         padding: var(--grid-cell-padding-v) var(--grid-cell-padding-h);
@@ -91,22 +90,10 @@
         }
 
         .grid {
-            height: calc(
-                100% + var(--grid-cell-padding-v) * 2 +
-                    var(--grid-cell-margin-v)
-            );
-            margin: calc(
-                    0px - var(--grid-cell-padding-v) -
-                        (var(--grid-cell-margin-v) / 2)
-                )
-                calc(
-                    0px - var(--grid-cell-padding-h) -
-                        (var(--grid-cell-margin-h) / 2)
-                );
-            width: calc(
-                100% + var(--grid-cell-padding-h) * 2 +
-                    var(--grid-cell-margin-h)
-            );
+            height: calc(100% + var(--grid-cell-padding-v) * 2 + var(--grid-cell-margin-v));
+            margin: calc(0px - var(--grid-cell-padding-v) - (var(--grid-cell-margin-v) / 2))
+                calc(0px - var(--grid-cell-padding-h) - (var(--grid-cell-margin-h) / 2));
+            width: calc(100% + var(--grid-cell-padding-h) * 2 + var(--grid-cell-margin-h));
         }
     }
 }
