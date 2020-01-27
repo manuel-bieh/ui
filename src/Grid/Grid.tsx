@@ -29,18 +29,14 @@ const Grid = ({
     ...props
 }: Props) => (
     <Element
-        className={classNames(
-            css.grid,
-            textAlign && css[`textAlign${ucfirst(textAlign)}`],
-            align && css[`align${ucfirst(align)}`],
-            justifyContent && css[`justifyContent${ucfirst(justifyContent)}`],
-            className,
-            {
-                [css.fluid]: fluid,
-                [css.seamless]: seamless,
-                [css.centered]: centered,
-            }
-        )}
+        className={classNames(css.grid, className, {
+            [css[`textAlign${ucfirst(textAlign)}`]]: Boolean(textAlign),
+            [css[`align${ucfirst(align || '')}`]]: Boolean(align),
+            [css[`justifyContent${ucfirst(justifyContent || '')}`]]: Boolean(justifyContent),
+            [css.fluid]: fluid,
+            [css.seamless]: seamless,
+            [css.centered]: centered,
+        })}
         {...props}
     >
         {children}

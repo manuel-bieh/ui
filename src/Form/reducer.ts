@@ -1,28 +1,9 @@
 import { produce } from 'immer';
+import { FormState } from './types';
 
-type State = {
-    [key: string]: any;
-    errors?: {};
-    values?: {};
-};
-
-export const initialState: State = Object.freeze({
-    errors: undefined,
-    externalErrors: undefined,
-    // form: null | any,
-    id: undefined,
-    isInvalid: false,
-    isSubmitting: false,
-    isValidating: false,
-    // onChange: () => {},
-    // resetValues: () => void,
-    // resetError: (fieldName: string) => void,
-    // submit: () => any,
-    values: {},
-});
-
-export default (state: State = initialState, action: any) =>
-    produce(state, (draft: State) => {
+export default (state: FormState = {}, action: any) =>
+    produce(state, (draft: FormState) => {
+        // console.log({ action });
         switch (action.type) {
             case 'SET_VALUES': {
                 draft.values = action.payload;
@@ -41,18 +22,22 @@ export default (state: State = initialState, action: any) =>
             case 'SET_VALIDATION_STATUS': {
                 draft.isValidating = action.payload;
                 if (action.payload === true) {
-                    draft.externalErrors = null;
-                    draft.errors = null;
+                    draft.externalErrors = undefined;
+                    draft.errors = undefined;
+                    // TODO: Write tests and check if this works even if they're not set yet
+                    // delete draft.externalErrors;
+                    // delete draft.errors;
                 }
                 return;
             }
 
             case 'RESET_FIELD_ERROR': {
-                if (
-                    typeof draft.errors !== 'undefined' &&
-                    draft.errors !== null
-                ) {
+                if (typeof draft.errors !== 'undefined' && draft.errors !== null) {
                     delete draft.errors[action.payload];
+                    // No more errors left? Delete errors property completely
+                    if (Object.keys(draft.errors).length === 0) {
+                        delete draft.errors;
+                    }
                 }
                 return;
             }
@@ -61,7 +46,17 @@ export default (state: State = initialState, action: any) =>
                 draft.isSubmitting = action.payload || false;
                 return;
             }
+
+            case 'SET_ERRORS': {
+                draft.errors = action.payload;
+                return;
+            }
+
+            case 'RESET_ERRORS': {
+                delete draft.errors;
+                return;
+            }
         }
 
-        return initialState;
+        return state;
     });

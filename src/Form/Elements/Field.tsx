@@ -10,14 +10,9 @@ const Field = ({
     resetErrorStateOnFocus,
     ...props
 }: any) => {
-    const {
-        onChange,
-        onFocus,
-        isSubmitting,
-        isValidating,
-        resetError,
-        values,
-    } = React.useContext(FormContext);
+    const { onChange, onFocus, isSubmitting, isValidating, resetError, values } = React.useContext(
+        FormContext
+    );
     return (
         <Element
             {...props}

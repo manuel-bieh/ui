@@ -12,10 +12,7 @@ declare module '@manuel-bieh/ui' {
         render(): React.Element;
     }
 
-    declare function EventCard(props: {
-        icon?: Icon;
-        title: string;
-    }): React.Element;
+    declare function EventCard(props: { icon?: Icon; title: string }): React.Element;
 
     declare function Logo(props: { width?: number }): React.Element;
 

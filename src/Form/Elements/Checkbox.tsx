@@ -11,9 +11,7 @@ const Checkbox = ({ as: Element = Field, name, value, ...props }: any) => {
             value={value || 'on'}
             type="checkbox"
             checked={
-                value
-                    ? (values[name] || []).includes(value)
-                    : ['on', true].includes(values[name])
+                value ? (values[name] || []).includes(value) : ['on', true].includes(values[name])
             }
             onChange={onChange}
         />

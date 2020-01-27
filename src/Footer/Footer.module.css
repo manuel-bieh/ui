@@ -10,8 +10,12 @@
     width: 100%;
 
     &:after {
+        /* Using 179.5deg inside of linear-gradient causes postcss-loader to throw an
+        "unknown word" error. Setting it as css variable and using works fine ... */
+        --angle: 179.5deg;
+
         background: linear-gradient(
-            179.5deg,
+            var(--angle),
             rgba(255, 255, 255, 0) 0,
             rgba(255, 255, 255, 0) 50%,
             var(--color-secondary) 51%,

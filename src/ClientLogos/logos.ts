@@ -2,8 +2,7 @@ export default [
     {
         name: 'Porsche',
         image: 'porsche.svg',
-        url:
-            'https://www.porsche.com/germany/aboutporsche/service/porschedigitallab/',
+        url: 'https://www.porsche.com/germany/aboutporsche/service/porschedigitallab/',
     },
     {
         name: 'ProSiebenSat1 Digital',
@@ -19,6 +18,14 @@ export default [
         name: 'Daimler',
         image: 'daimler.svg',
         url: 'https://www.lab1886.com/',
+    },
+    {
+        name: 'Osram',
+        image: 'osram.svg',
+    },
+    {
+        name: 'Rocket Internet',
+        image: 'rocket-internet.svg',
     },
     {
         name: 'Handelsblatt',

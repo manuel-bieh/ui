@@ -1,16 +1,12 @@
 {
-  "linters": {
-    "*.{js,jsx,ts,tsx,css}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --ext js,jsx,ts,tsx",
-      "git add"
-    ],
-    "*.css": [
-      "stylelint --fix",
-      "git add"
-    ]
-  }
+  "{src,config,scripts}/**/*.{js,jsx,ts,tsx,css}": [
+    "prettier --write"
+  ],
+  "{src,config,scripts}/**/*.{js,jsx,ts,tsx}": [
+    "eslint --fix --ext js,jsx,ts,tsx",
+    "leasot -x"
+  ],
+  "*.css": [
+    "stylelint --fix"
+  ]
 }

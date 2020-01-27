@@ -8,11 +8,7 @@ type Props = {
 };
 
 const Header: React.FC<Props> = ({ children, className }: Props) => {
-    return (
-        <header className={classNames(css.wrapper, className)}>
-            {children}
-        </header>
-    );
+    return <header className={classNames(css.wrapper, className)}>{children}</header>;
 };
 
 export default Header;

@@ -1,10 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Hierarchy from '../../.storybook/hierarchyGroups';
 import css from './Grid.module.css';
 import { Grid, Column } from '.';
 
-storiesOf(`${Hierarchy.LAYOUT}|Grid`, module)
+storiesOf('Layout|Grid', module)
     .add('Fixed max width', () => (
         <Grid className={css.debug}>
             <Column xs={12} sm={6} md={4} lg={3} xl={2} className={css.debug}>

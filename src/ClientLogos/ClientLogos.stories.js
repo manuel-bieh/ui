@@ -1,9 +1,12 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import Hierarchy from '../../.storybook/hierarchyGroups';
+// import Hierarchy from '../../.storybook/hierarchyGroups';
 
 import ClientLogos from '.';
 
-storiesOf(`${Hierarchy.COMPONENTS}|ClientLogos`, module).add('Default', () => (
-    <ClientLogos />
-));
+export const defaultStory = () => <ClientLogos />;
+
+defaultStory.story = {
+    name: 'Default',
+};
+
+export default { title: 'Components|Client Logos' };

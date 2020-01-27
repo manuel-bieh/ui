@@ -1,6 +1,7 @@
 {
   "hooks": {
-    "post-merge": "install-deps-postmerge",
-    "pre-commit": "lint-staged"
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+    "pre-commit": "lint-staged",
+    "post-merge": "install-deps-postmerge"
   }
 }

@@ -4,10 +4,7 @@ import css from './Icons.module.css';
 import { IconProps } from './types';
 
 const Instagram = ({ className, label }: IconProps) => (
-    <a
-        href="https://www.instagram.com/manuelbieh/"
-        className={classNames(className, css.wrapper)}
-    >
+    <a href="https://www.instagram.com/manuelbieh/" className={classNames(className, css.wrapper)}>
         <img
             alt="Logo: Instagram"
             src={require('../../assets/img/social-media/instagram.svg')}

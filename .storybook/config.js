@@ -1,43 +1,39 @@
 import React from 'react';
-import {
-    configure,
-    setAddon,
-    addDecorator,
-    addParameters,
-} from '@storybook/react';
+import { configure, addDecorator, addParameters } from '@storybook/react';
 import './stories/intro';
-
 import '../src/index.module.css';
+import hierarchyGroups from './hierarchyGroups';
+import pkg from '../package.json';
 
-addDecorator((storyFn) => (
-    <div className="globalPadding" style={{ padding: 16 }}>
-        {storyFn()}
-    </div>
-));
+const hierarchySeparator = '/';
+const hierarchyRootSeparator = '|';
 
-export const resetPadding = (storyFn) => (
-    <React.Fragment>
-        <style
-            dangerouslySetInnerHTML={{
-                __html: '.globalPadding { padding: 0 !important}',
-            }}
-        />
-        {storyFn()}
-    </React.Fragment>
+global.Group = new Proxy(
+    {},
+    {
+        get: (target, name) => {
+            if (hierarchyGroups.includes(name) === false) {
+                console.warn(`Hierarchy Group ${name} does not exist.`);
+            }
+
+            return (component) =>
+                `${name}${hierarchyRootSeparator}${component}`;
+        },
+    }
 );
 
 addParameters({
     options: {
-        name: 'ManuelBieh UI',
-        url: 'https://www.github.com/manuel-bieh/ui',
-        hierarchySeparator: /\//,
-        hierarchyRootSeparator: /\|/,
+        theme: {
+            brandTitle: pkg.name,
+            brandUrl: pkg.homepage,
+        },
+        hierarchySeparator,
+        hierarchyRootSeparator,
     },
 });
 
-const req = require.context('../src', true, /.stories.js$/);
-function loadStories() {
-    req.keys().forEach((filename) => req(filename));
-}
-
-configure(loadStories, module);
+configure(
+    require.context('../src/', true, /\.stories\.(js|jsx|ts|tsx)$/),
+    module
+);

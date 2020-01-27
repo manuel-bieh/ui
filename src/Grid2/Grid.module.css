@@ -1,0 +1,135 @@
+@import '../media.css';
+@import '../variables.css';
+
+:root {
+    --grid-cell-padding-h: 8px;
+    --grid-cell-padding-v: 8px;
+    --grid-cell-margin-h: 8px; /* "gutter size" */
+    --grid-cell-margin-v: 8px;
+    --spacing-xsmall: 4px;
+    --spacing-small: 8px;
+    --spacing-default: 16px;
+    --spacing-medium: 24px;
+    --spacing-large: 36px;
+    --max-width: var(--viewport-max-width, 1280px);
+}
+
+.grid {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: var(--max-width);
+    position: relative;
+    width: 100%;
+
+    &.test {
+        color: var(--test);
+    }
+
+    &.centered {
+        margin: auto;
+    }
+
+    &.fluid {
+        max-width: 100%;
+    }
+
+    &.seamless {
+        & > .grid,
+        & > .grid > .col,
+        & > .grid > .col .grid:first-child,
+        & > .grid > .col .grid:last-child {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+
+    &.justifyContent {
+        &Start {
+            justify-content: flex-start;
+        }
+
+        &End {
+            justify-content: flex-end;
+        }
+
+        &Center {
+            justify-content: center;
+        }
+    }
+
+    .col {
+        box-sizing: border-box;
+        flex: 0 1 auto;
+        float: left;
+        margin: calc(var(--grid-cell-margin-v) / 2) calc(var(--grid-cell-margin-h) / 2);
+        max-width: 100%;
+        min-height: 1px;
+        padding: var(--grid-cell-padding-v) var(--grid-cell-padding-h);
+        position: relative;
+        vertical-align: top;
+
+        &.textAlign {
+            &Left {
+                text-align: left;
+            }
+
+            &Right {
+                text-align: right;
+            }
+
+            &Center {
+                text-align: center;
+            }
+        }
+
+        .grid {
+            height: calc(100% + var(--grid-cell-padding-v) * 2 + var(--grid-cell-margin-v));
+            margin: calc(0px - var(--grid-cell-padding-v) - (var(--grid-cell-margin-v) / 2))
+                calc(0px - var(--grid-cell-padding-h) - (var(--grid-cell-margin-h) / 2));
+            width: calc(100% + var(--grid-cell-padding-h) * 2 + var(--grid-cell-margin-h));
+        }
+    }
+}
+
+@each $size in (xs, sm, md, lg, xl) {
+    @media (--viewport-$(size)) {
+        .grid {
+            .col-$(size)Hidden {
+                display: none;
+            }
+            .col-$(size)Visible {
+                display: block;
+            }
+        }
+
+        @each $cols in 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 {
+            .col-$(size)$(cols) {
+                /* stylelint-disable-next-line */
+                width: calc(100% / (12 / $(cols)) - var(--grid-cell-margin-h));
+            }
+        }
+    }
+}
+
+.grid.debug {
+    outline: 1px solid red;
+}
+
+.col.debug {
+    outline: 1px solid green;
+}
+
+.grid .grid .col.debug {
+    outline: 1px solid blue;
+}
+
+.grid .grid.debug {
+    outline: 1px solid orange;
+}

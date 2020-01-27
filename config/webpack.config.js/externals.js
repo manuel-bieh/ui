@@ -1,5 +1,5 @@
 module.exports = {
-    react: {
+    'react': {
         root: 'React',
         commonjs2: 'react',
         commonjs: 'react',
@@ -19,7 +19,7 @@ module.exports = {
         amd: 'react-router-dom',
         umd: 'react-router-dom',
     },
-    classnames: {
+    'classnames': {
         root: 'classNames',
         commonjs2: 'classnames',
         commonjs: 'classnames',
