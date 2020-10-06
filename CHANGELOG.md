@@ -1,3 +1,11 @@
+### [2.3.2](https://github.com/manuel-bieh/ui/compare/v2.3.1...v2.3.2) (2020-10-06)
+
+
+### 💉 Improvements
+
+* add missing files ([76a2f30](https://github.com/manuel-bieh/ui/commit/76a2f30fea1d894c2bcf6704bad3e0f7cb9b0cab))
+* some mostly small cleanups ([a7349be](https://github.com/manuel-bieh/ui/commit/a7349be2f47fb14d33a9ee14a08788e210a262ce))
+
 ### [2.3.1](https://github.com/manuel-bieh/ui/compare/v2.3.0...v2.3.1) (2020-04-01)
 
 
