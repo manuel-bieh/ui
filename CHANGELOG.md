@@ -1,3 +1,10 @@
+### [2.3.4](https://github.com/manuel-bieh/ui/compare/v2.3.3...v2.3.4) (2020-10-06)
+
+
+### 🔧 Fixes
+
+* change casing for font file names ([8f58490](https://github.com/manuel-bieh/ui/commit/8f58490211e8cc0a5fcfceb35150f7d871047308))
+
 ### [2.3.3](https://github.com/manuel-bieh/ui/compare/v2.3.2...v2.3.3) (2020-10-06)
 
 
