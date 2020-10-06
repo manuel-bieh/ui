@@ -10,6 +10,11 @@ export default [
         url: 'https://www.prosiebensat1digital.de/',
     },
     {
+        name: 'Börse Stuttgart',
+        image: 'boerse-stuttgart.svg',
+        url: 'https://www.bsdex.de/',
+    },
+    {
         name: 'Zalando',
         image: 'zalando.svg',
         url: 'https://www.zalando.de/',

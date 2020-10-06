@@ -47,9 +47,9 @@ const cssModuleLoader = {
         {
             loader: require.resolve('css-loader'),
             options: {
-                localsConvention: 'camelCase',
                 modules: {
                     getLocalIdent: getLocalIdentWorkaround,
+                    exportLocalsConvention: 'camelCase',
                 },
                 importLoaders: 1,
                 sourceMap: generateSourceMap,
