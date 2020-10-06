@@ -1,3 +1,10 @@
+### [2.3.3](https://github.com/manuel-bieh/ui/compare/v2.3.2...v2.3.3) (2020-10-06)
+
+
+### 💉 Improvements
+
+* harmonize client logos ([7db3518](https://github.com/manuel-bieh/ui/commit/7db3518460f8e5c1aa1627abac02488555cc6b88))
+
 ### [2.3.2](https://github.com/manuel-bieh/ui/compare/v2.3.1...v2.3.2) (2020-10-06)
 
 
