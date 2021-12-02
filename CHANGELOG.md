@@ -1,3 +1,10 @@
+### [2.3.5](https://github.com/manuel-bieh/ui/compare/v2.3.4...v2.3.5) (2021-12-02)
+
+
+### 💉 Improvements
+
+* add gymondo client logo ([440dd82](https://github.com/manuel-bieh/ui/commit/440dd82c1e434939ace78533805c179663ca4920))
+
 ### [2.3.4](https://github.com/manuel-bieh/ui/compare/v2.3.3...v2.3.4) (2020-10-06)
 
 
