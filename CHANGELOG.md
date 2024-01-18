@@ -1,3 +1,10 @@
+### [2.3.6](https://github.com/manuel-bieh/ui/compare/v2.3.5...v2.3.6) (2024-01-18)
+
+
+### 💉 Improvements
+
+* update tech and client logos ([1fc3541](https://github.com/manuel-bieh/ui/commit/1fc354191b1317bdb29a54f2697a5576ceb859e6))
+
 ### [2.3.5](https://github.com/manuel-bieh/ui/compare/v2.3.4...v2.3.5) (2021-12-02)
 
 
