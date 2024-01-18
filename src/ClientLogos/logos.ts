@@ -1,5 +1,15 @@
 export default [
     {
+        name: 'Volksbank',
+        image: 'vr-smart-finanz.svg',
+        url: 'https://www.vr-smart-guide.de/',
+    },
+    {
+        name: 'Börse Stuttgart',
+        image: 'boerse-stuttgart.svg',
+        url: 'https://www.bsdex.de/',
+    },
+    {
         name: 'Porsche',
         image: 'porsche.svg',
         url: 'https://www.porsche.com/germany/aboutporsche/service/porschedigitallab/',
@@ -8,11 +18,6 @@ export default [
         name: 'ProSiebenSat1 Digital',
         image: 'pro7sat1digital.svg',
         url: 'https://www.prosiebensat1digital.de/',
-    },
-    {
-        name: 'Börse Stuttgart',
-        image: 'boerse-stuttgart.svg',
-        url: 'https://www.bsdex.de/',
     },
     {
         name: 'Zalando',

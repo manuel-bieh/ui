@@ -11,7 +11,7 @@
     "tag": "beta"
   },
   "engines": {
-    "node": ">=8.12.0",
+    "node": "<=16",
     "yarn": "^1.10.0"
   },
   "scripts": {
