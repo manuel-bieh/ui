@@ -1,3 +1,10 @@
+### [2.3.8](https://github.com/manuel-bieh/ui/compare/v2.3.7...v2.3.8) (2024-01-19)
+
+
+### 💉 Improvements
+
+* try different github token ([64e4f6b](https://github.com/manuel-bieh/ui/commit/64e4f6bb1e8f110e15b02cac3f3497d94cbba973))
+
 ### [2.3.7](https://github.com/manuel-bieh/ui/compare/v2.3.6...v2.3.7) (2024-01-19)
 
 
