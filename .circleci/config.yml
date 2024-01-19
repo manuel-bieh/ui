@@ -13,7 +13,8 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             # - 'ac:ac:31:d0:a6:dc:8d:0d:7d:51:3d:80:1d:dd:cb:df'
-            - 'SHA256:tFEm0vMzg/uXQJMvQIoSFYAwhfCEL1DJM5meg15+A1k'
+            # - 'SHA256:tFEm0vMzg/uXQJMvQIoSFYAwhfCEL1DJM5meg15+A1k'
+            - 'SHA256:jUPTwtkPVaVezgHNEDSaGGdXPLMTOgxq8QJiZjsMP04'
 
       - checkout
 
