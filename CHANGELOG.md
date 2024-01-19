@@ -1,3 +1,10 @@
+### [2.3.7](https://github.com/manuel-bieh/ui/compare/v2.3.6...v2.3.7) (2024-01-19)
+
+
+### 💉 Improvements
+
+* add new fingerprint ([3fde887](https://github.com/manuel-bieh/ui/commit/3fde887c3745848d4c7bb97680db3c6c44ea6770))
+
 ### [2.3.6](https://github.com/manuel-bieh/ui/compare/v2.3.5...v2.3.6) (2024-01-18)
 
 
