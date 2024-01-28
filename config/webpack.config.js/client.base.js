@@ -14,6 +14,7 @@ module.exports = {
     output: {
         chunkFilename: '[name].chunk.js',
         filename: '[name].js',
+        hashFunction: 'xxhash64'
         libraryTarget: 'commonjs2',
         // path: path.join(paths.clientBuild, paths.publicPath),
         path: path.join(paths.clientBuild, 'cjs'),
