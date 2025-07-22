@@ -1,6 +1,21 @@
 export default [
     {
-        name: 'Volksbank',
+        name: 'Spark Networks',
+        image: 'spark-networks.svg',
+        url: 'https://www.spark.net/',
+    },
+    {
+        name: 'Eberlein Kunz',
+        image: 'eberlein-kunz.svg',
+        url: 'https://www.eberlein-kunz.de/',
+    },
+    {
+        name: 'Finstreet',
+        image: 'finstreet.svg',
+        url: 'https://www.finstreet.de/',
+    },
+    {
+        name: 'Volksbank Smart Finanz',
         image: 'vr-smart-finanz.svg',
         url: 'https://www.vr-smart-guide.de/',
     },
